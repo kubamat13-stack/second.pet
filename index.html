@@ -18,48 +18,133 @@
 
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-family: 'Poppins', sans-serif;
       background: #ffffff;
       color: #111;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* MAIN */
+    .container {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
       text-align: center;
     }
 
-    .container {
-      padding: 10px;
-      max-width: 420px;
-    }
-
     .logo img {
-      max-width: 220px;
+      width: 180px;
       height: auto;
-      margin-bottom: 5px;
+      margin-bottom: 20px;
     }
 
     .tagline {
       font-size: 16px;
-      font-weight: 400;
       color: #555;
       margin-bottom: 12px;
     }
 
-    .small {
-      font-size: 13px;
-      color: #888;
+    .instagram a {
+      font-size: 14px;
+      color: #111;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .instagram a:hover {
+      text-decoration: underline;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 700px;
+      margin: 80px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    section p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* DESKTOP */
+    @media (min-width: 768px) {
+      .logo img {
+        width: 280px;
+      }
+
+      .tagline {
+        font-size: 18px;
+      }
+
+      nav {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
 
 <body>
+
+  <nav>
+    <a href="#about">About project</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <div class="container">
     <div class="logo">
       <img src="SECOND_PET-removebg-preview.png" alt="Second Pet logo">
     </div>
     <div class="tagline">A small joy, every minute.</div>
-    <div class="small">Something is coming.</div>
+    <div class="instagram">
+      <a href="https://www.instagram.com/Second.pet.watches" target="_blank">
+        Instagram → @Second.pet.watches
+      </a>
+    </div>
   </div>
+
+  <section id="about">
+    <h2>About project</h2>
+    <p>
+      Second Pet is a project built around small moments, emotional objects and
+      the stories hidden behind them. Something meaningful is coming soon.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      For collaborations or questions, reach out via Instagram.
+    </p>
+  </section>
+
 </body>
 </html>
