@@ -2,119 +2,124 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Second Pet</title>
+  <title>Second Pet | Quiet Joy Watches</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon-32x32.png">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: #ffffff;
       color: #111;
+      line-height: 1.6;
     }
 
     /* NAV */
     nav {
       display: flex;
       justify-content: center;
-      gap: 24px;
-      padding: 20px;
-      font-size: 14px;
+      gap: 30px;
+      padding: 30px 20px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-
     nav a {
       text-decoration: none;
-      color: #111;
-      font-weight: 500;
+      color: #888;
+      transition: color 0.3s;
     }
+    nav a:hover { color: #111; }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* MAIN */
-    .container {
-      min-height: calc(100vh - 80px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    /* HERO SECTION */
+    .hero {
+      max-width: 1000px;
+      margin: 0 auto;
       padding: 20px;
       text-align: center;
     }
-
     .logo img {
-      width: 180px;
+      width: 220px;
+      margin-bottom: 40px;
+    }
+    .hero-image img {
+      width: 100%;
+      max-width: 600px;
       height: auto;
+      border-radius: 4px;
+      margin-bottom: 30px;
+    }
+    .tagline {
+      font-size: 20px;
+      font-weight: 400;
+      color: #111;
+      margin-bottom: 40px;
+    }
+
+    /* THE MODEL SECTION */
+    .model-highlight {
+      background: #f9f9f9;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .model-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .model-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+    .model-name {
+      font-size: 32px;
       margin-bottom: 20px;
     }
-
-    .tagline {
-      font-size: 16px;
-      color: #555;
-      margin-bottom: 12px;
-    }
-
-    .instagram a {
+    .cta-button {
+      display: inline-block;
+      padding: 15px 40px;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
       font-size: 14px;
+      font-weight: 600;
+      margin-top: 20px;
+      border-radius: 2px;
+      transition: opacity 0.3s;
+    }
+    .cta-button:hover { opacity: 0.8; }
+
+    /* CONTENT SECTIONS */
+    section {
+      max-width: 700px;
+      margin: 100px auto;
+      padding: 0 25px;
+    }
+    h2 { font-size: 24px; margin-bottom: 30px; text-align: center; }
+    p { font-size: 16px; color: #444; margin-bottom: 20px; }
+
+    /* FOOTER / CONTACT */
+    footer {
+      padding: 60px 20px;
+      text-align: center;
+      border-top: 1px solid #eee;
+      font-size: 14px;
+    }
+    .social-links a {
       color: #111;
       text-decoration: none;
       font-weight: 600;
+      margin: 0 10px;
     }
 
-    .instagram a:hover {
-      text-decoration: underline;
-    }
-
-    /* SECTIONS */
-    section {
-      max-width: 700px;
-      margin: 80px auto;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    section h2 {
-      font-size: 22px;
-      margin-bottom: 24px;
-    }
-
-    section p {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.7;
-      margin-bottom: 18px;
-    }
-
-    section a {
-      color: #111;
-      text-decoration: underline;
-      font-weight: 500;
-    }
-
-    /* DESKTOP */
     @media (min-width: 768px) {
-      .logo img {
-        width: 280px;
-      }
-
-      .tagline {
-        font-size: 18px;
-      }
-
-      nav {
-        font-size: 15px;
-      }
+      .logo img { width: 280px; }
+      .tagline { font-size: 24px; }
     }
   </style>
 </head>
@@ -122,61 +127,58 @@
 <body>
 
   <nav>
-    <a href="#about">About project</a>
+    <a href="#about">The Story</a>
+    <a href="#model">The Watch</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <div class="container">
+  <div class="hero">
     <div class="logo">
       <img src="SECOND_PET-removebg-preview.png" alt="Second Pet logo">
     </div>
+    
+    <div class="hero-image">
+      <img src="watch-hero-wrist.jpg" alt="Second Pet Corgi Edition">
+    </div>
+    
     <div class="tagline">A small joy, every minute.</div>
-    <div class="instagram">
-      <a href="https://www.instagram.com/second.pet.watch" target="_blank">
-        Our Instagram
-      </a>
+  </div>
+
+  <div id="model" class="model-highlight">
+    <div class="model-content">
+      <div class="model-title">Current Release</div>
+      <h2 class="model-name">The Catch: Corgi Edition</h2>
+      <p>
+        Featuring a custom-made second hand with a small green ball. Once every minute, the ball aligns perfectly with the dog's mouth. A quiet reward for your attention.
+      </p>
+      <a href="https://www.etsy.com/shop/YourShopName" target="_blank" class="cta-button">View on Etsy</a>
     </div>
   </div>
 
   <section id="about">
-    <h2>About project</h2>
-
+    <h2>The Story</h2>
     <p>
-      Second Pet is an independent design project created in Poland, born from everyday life with a dog and a love for thoughtful, minimalist objects.
+      Second Pet is an independent project from Poznań, Poland. It was born from a simple observation: most watches treat the second hand as an afterthought. I wanted to turn that around.
     </p>
-
     <p>
-      The idea was simple: to create a small, friendly, and genuinely joyful product that doesn’t shout for attention, but quietly rewards it. A design that makes you smile not once, but again and again, every minute.
+      The idea is rooted in "quiet joy"—those small, private moments that don’t shout for attention but reward it. Inspired by my Corgi and those repetitive rituals of play, I designed a watch that creates a tiny interaction between time and illustration.
     </p>
-
     <p>
-      Our watches are not about specifications, status, or trends. They are about a moment. A tiny interaction between time and illustration. A playful detail that reveals itself only if you stop for a second and actually look.
+      This is not a corporate product. It’s a solo project, built step by step, focused on design and novelty rather than status. I’m starting small with this first production run to see if others find this one-minute ritual as satisfying as I do.
     </p>
-
     <p>
-      The inspiration comes directly from life with a dog. Waiting, playing, and those small rituals that fill ordinary days with warmth. That’s why Second Pet is made for dog lovers, but also for people who appreciate good design, simplicity, and objects with a sense of humor.
-    </p>
-
-    <p>
-      This is our very first production run. A small, carefully made beginning of what we hope will become a growing collection of thoughtful designs. By supporting the project at this stage, you are supporting an independent creator, experimenting, learning, and building something step by step without mass production, shortcuts, or empty promises.
-    </p>
-
-    <p>
-      Second Pet is not a brand created by a corporation. It’s a personal project, developed slowly and intentionally, with attention to detail and respect for the user. Each design starts with an idea, not a market spreadsheet.
-    </p>
-
-    <p>
-      If you are someone who notices small things, enjoys quiet jokes, loves dogs, or simply believes that everyday objects can be kinder and more human, then you are in the right place.
+      Every watch is shipped personally from my home in Poznań. No shortcuts, just a genuine attempt to make everyday objects a bit more human and a lot more fun.
     </p>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      For collaborations or questions, reach out via
-      <a href="https://www.instagram.com/second.pet.watch" target="_blank">Instagram</a>.
-    </p>
-  </section>
+  <footer id="contact">
+    <p>Based in Poznań, Poland. Shipping worldwide.</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/second.pet.watch" target="_blank">Instagram</a>
+      <span>/</span>
+      <a href="mailto:hello@second.pet">Email</a>
+    </div>
+  </footer>
 
 </body>
 </html>
