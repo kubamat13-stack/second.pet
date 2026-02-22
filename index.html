@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Second Pet | Quiet Joy Watches</title>
+  <title>Second Pet | A small joy, every minute</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="favicon-32x32.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -19,6 +19,9 @@
 
     /* NAV */
     nav {
+      position: absolute;
+      top: 0;
+      width: 100%;
       display: flex;
       justify-content: center;
       gap: 30px;
@@ -26,6 +29,7 @@
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 1px;
+      z-index: 10;
     }
     nav a {
       text-decoration: none;
@@ -34,92 +38,80 @@
     }
     nav a:hover { color: #111; }
 
-    /* HERO SECTION */
+    /* FULL SCREEN HERO */
     .hero {
-      max-width: 1000px;
-      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
       text-align: center;
     }
     .logo img {
-      width: 220px;
-      margin-bottom: 40px;
-    }
-    .hero-image img {
-      width: 100%;
-      max-width: 600px;
+      width: 200px;
       height: auto;
-      border-radius: 4px;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
     .tagline {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 400;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    .hero-social a {
+      font-size: 14px;
       color: #111;
-      margin-bottom: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid #111;
     }
 
-    /* THE MODEL SECTION */
-    .model-highlight {
-      background: #f9f9f9;
+    /* SECTIONS */
+    section {
+      min-height: 80vh;
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 100px 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    h2 { font-size: 26px; margin-bottom: 40px; text-align: center; font-weight: 600; }
+    p { font-size: 16px; color: #444; margin-bottom: 24px; }
+
+    /* THE WATCH SECTION - MULTI BREED */
+    .watch-box {
+      background: #fcfcfc;
+      border: 1px solid #eee;
+      padding: 40px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .watch-box h3 { font-size: 18px; margin-bottom: 15px; }
+    
+    .cta-disabled {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* FOOTER */
+    footer {
       padding: 80px 20px;
       text-align: center;
-    }
-    .model-content {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .model-title {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #888;
-      margin-bottom: 10px;
-    }
-    .model-name {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-    .cta-button {
-      display: inline-block;
-      padding: 15px 40px;
-      background: #111;
-      color: #fff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      margin-top: 20px;
-      border-radius: 2px;
-      transition: opacity 0.3s;
-    }
-    .cta-button:hover { opacity: 0.8; }
-
-    /* CONTENT SECTIONS */
-    section {
-      max-width: 700px;
-      margin: 100px auto;
-      padding: 0 25px;
-    }
-    h2 { font-size: 24px; margin-bottom: 30px; text-align: center; }
-    p { font-size: 16px; color: #444; margin-bottom: 20px; }
-
-    /* FOOTER / CONTACT */
-    footer {
-      padding: 60px 20px;
-      text-align: center;
-      border-top: 1px solid #eee;
+      background: #fafafa;
       font-size: 14px;
     }
-    .social-links a {
-      color: #111;
-      text-decoration: none;
-      font-weight: 600;
-      margin: 0 10px;
-    }
 
+    /* MOBILE ADJUSTMENTS */
     @media (min-width: 768px) {
-      .logo img { width: 280px; }
-      .tagline { font-size: 24px; }
+      .logo img { width: 320px; }
+      .tagline { font-size: 22px; }
+      h2 { font-size: 32px; }
     }
   </style>
 </head>
@@ -128,7 +120,7 @@
 
   <nav>
     <a href="#about">The Story</a>
-    <a href="#model">The Watch</a>
+    <a href="#watch">The Watch</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -136,48 +128,46 @@
     <div class="logo">
       <img src="SECOND_PET-removebg-preview.png" alt="Second Pet logo">
     </div>
-    
-    <div class="hero-image">
-      <img src="watch-hero-wrist.jpg" alt="Second Pet Corgi Edition">
-    </div>
-    
     <div class="tagline">A small joy, every minute.</div>
+    <div class="hero-social">
+      <a href="https://www.instagram.com/second.pet.watch" target="_blank">Follow the process on Instagram</a>
+    </div>
   </div>
 
-  <div id="model" class="model-highlight">
-    <div class="model-content">
-      <div class="model-title">Current Release</div>
-      <h2 class="model-name">The Catch: Corgi Edition</h2>
-      <p>
-        Featuring a custom-made second hand with a small green ball. Once every minute, the ball aligns perfectly with the dog's mouth. A quiet reward for your attention.
-      </p>
-      <a href="https://www.etsy.com/shop/YourShopName" target="_blank" class="cta-button">View on Etsy</a>
+  <section id="watch">
+    <h2>The Watch</h2>
+    <p>
+      In most watches, the second hand is just a ticking line. At <strong>Second Pet</strong>, it's the heart of the design. 
+    </p>
+    <p>
+      We created a custom-made second hand with a small ball at the end. Once every minute, as the hand sweeps the dial, the ball aligns perfectly with the dog's mouth. Whether it's a <strong>Dachshund</strong> or a <strong>Corgi</strong>, the dog finally "catches" the ball. 
+    </p>
+    <div class="watch-box">
+      <h3>First Batch (Dachshund & Corgi)</h3>
+      <p>Independent production run. 40.9mm unisex case. Minimalist brushed dial. Soft silicone strap. Shipped from Poznań, Poland.</p>
+      <span class="cta-disabled">Coming to Etsy in April 2026</span>
     </div>
-  </div>
+  </section>
 
   <section id="about">
     <h2>The Story</h2>
     <p>
-      Second Pet is an independent project from Poznań, Poland. It was born from a simple observation: most watches treat the second hand as an afterthought. I wanted to turn that around.
+      Hi, I'm Jakub. <strong>Second Pet</strong> is a solo project born in Poznań from a love for thoughtful, minimalist objects and a life shared with a Corgi.
     </p>
     <p>
-      The idea is rooted in "quiet joy"—those small, private moments that don’t shout for attention but reward it. Inspired by my Corgi and those repetitive rituals of play, I designed a watch that creates a tiny interaction between time and illustration.
+      I’ve always been drawn to watches that act as <em>conversation starters</em>—designs that don't just tell time but offer a moment of "quiet joy." It’s that small, private smile you get when you’re in a boring meeting or commuting, and you notice your pet catching its ball on your wrist.
     </p>
     <p>
-      This is not a corporate product. It’s a solo project, built step by step, focused on design and novelty rather than status. I’m starting small with this first production run to see if others find this one-minute ritual as satisfying as I do.
+      This isn't a corporate venture. It's a personal experiment in design and novelty. Every detail, from the custom-weighted second hand to the minimalist dial, was developed slowly and intentionally. 
     </p>
     <p>
-      Every watch is shipped personally from my home in Poznań. No shortcuts, just a genuine attempt to make everyday objects a bit more human and a lot more fun.
+      I’m starting with this very first production run to see if others appreciate these small rituals as much as I do. No mass production, no shortcuts—just an independent project sent directly from my home to yours.
     </p>
   </section>
 
   <footer id="contact">
     <p>Based in Poznań, Poland. Shipping worldwide.</p>
-    <div class="social-links">
-      <a href="https://www.instagram.com/second.pet.watch" target="_blank">Instagram</a>
-      <span>/</span>
-      <a href="mailto:hello@second.pet">Email</a>
-    </div>
+    <p>Questions? Reach out via <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111; font-weight:600;">Instagram</a></p>
   </footer>
 
 </body>
