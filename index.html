@@ -9,6 +9,7 @@
 
   <style>
     * { box-sizing: border-box; scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -17,7 +18,6 @@
       line-height: 1.7;
     }
 
-    /* FIXED NAV */
     nav {
       position: fixed;
       top: 0;
@@ -31,6 +31,7 @@
       z-index: 1000;
       border-bottom: 1px solid #f0f0f0;
     }
+
     nav a {
       text-decoration: none;
       color: #111;
@@ -40,79 +41,101 @@
       letter-spacing: 1px;
       transition: opacity 0.3s;
     }
+
     nav a:hover { opacity: 0.6; }
 
-    /* FULL SCREEN HERO */
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 140px 20px 60px 20px;
       text-align: center;
     }
+
     .logo img {
-      width: 220px;
-      height: auto;
+      width: 240px;
       margin-bottom: 20px;
     }
+
     .tagline {
-      font-size: 16px;
-      color: #555;
-      margin-bottom: 12px;
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 25px;
     }
-    .instagram a {
-      font-size: 14px;
-      color: #111;
+
+    .cta {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       text-decoration: none;
-      font-weight: 600;
-      border-bottom: 2px solid #111;
+      background: #111;
+      color: #fff;
+      border-radius: 2px;
+      margin-bottom: 40px;
     }
 
-    /* SECTIONS */
-    section {
-      min-height: 100vh;
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 120px 25px 60px 25px;
+    .placeholder {
+      width: 100%;
+      max-width: 600px;
+      height: 260px;
+      background: #f4f4f4;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 20px;
     }
-    h2 { font-size: 28px; margin-bottom: 30px; text-align: center; font-weight: 700; }
-    p { font-size: 15px; color: #444; margin-bottom: 20px; }
 
-    /* THE WATCH BOX */
-    .watch-box {
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 120px 25px;
+    }
+
+    h2 {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 18px;
+    }
+
+    .highlight-box {
       background: #f9f9f9;
       padding: 40px;
+      margin: 40px 0;
       text-align: center;
-      margin: 30px 0;
-      border-radius: 2px;
     }
-    .watch-box h3 { font-size: 18px; margin-bottom: 10px; }
+
     .status {
-      display: inline-block;
-      margin-top: 20px;
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: #999;
+      color: #888;
+      margin-top: 15px;
+      display: inline-block;
     }
 
-    /* FOOTER */
     footer {
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
-      background: #fff;
       border-top: 1px solid #eee;
       font-size: 14px;
     }
 
     @media (min-width: 768px) {
-      .logo img { width: 280px; }
+      .logo img { width: 300px; }
       .tagline { font-size: 20px; }
       h2 { font-size: 36px; }
     }
@@ -121,57 +144,88 @@
 
 <body>
 
-  <nav>
-    <a href="#watch">The Watch</a>
-    <a href="#about">The Story</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<nav>
+  <a href="#watch">The Watch</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <div class="hero">
-    <div class="logo">
-      <img src="SECOND_PET-removebg-preview.png" alt="Second Pet logo">
-    </div>
-    <div class="tagline">A small joy, every minute.</div>
-    <div class="instagram">
-      <a href="https://www.instagram.com/second.pet.watch" target="_blank">Our Instagram</a>
-    </div>
+<div class="hero">
+  <div class="logo">
+    <img src="SECOND_PET-removebg-preview.png" alt="Second Pet logo">
   </div>
 
-  <section id="watch">
-    <h2>The Watch</h2>
-    <p>
-      In most watches, the second hand is just a ticking line. At <strong>Second Pet</strong>, it's the heart of the design. 
-    </p>
-    <p>
-      The concept is built around a custom-made second hand with a small ball at the end. Once every minute, as the hand sweeps the dial, the ball aligns perfectly with the dog's mouth. Whether it's a <strong>Dachshund</strong> or a <strong>Corgi</strong>, the dog finally "catches" the ball. 
-    </p>
-    <div class="watch-box">
-      <h3>First Batch (Dachshund & Corgi)</h3>
-      <p>Independent production run. Minimalist brushed dial. Soft silicone strap. Shipped from Poland.</p>
-      <span class="status">Coming to Etsy in April 2026</span>
-    </div>
-  </section>
+  <div class="tagline">
+    A small joy, every minute.
+  </div>
 
-  <section id="about">
-    <h2>The Story</h2>
-    <p>
-      <strong>Second Pet</strong> is an independent design project created in Poland, born from a love for thoughtful, minimalist objects and a sense of humor.
-    </p>
-    <p>
-      The idea is rooted in "quiet joy"—those small, private moments that don’t shout for attention but reward it. It’s that small smile you get when you notice your pet catching its ball on your wrist during a busy day.
-    </p>
-    <p>
-      This isn’t a corporate product. It’s an experiment in design and novelty, developed slowly and intentionally. From the custom-weighted second hand to the clean illustration, every detail is made for people who notice small things.
-    </p>
-    <p>
-      We are starting with this limited production run to see if others find this one-minute ritual as satisfying as we do. No mass production, no shortcuts—just an independent project sent directly from our home to yours.
-    </p>
-  </section>
+  <a class="cta" href="https://www.etsy.com" target="_blank">
+    Launching on Etsy April 2026
+  </a>
 
-  <footer id="contact">
-    <p>Independent project based in Poland. Shipping worldwide.</p>
-    <p>Questions? Reach out via <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111; font-weight:700; text-decoration:none;">Instagram</a></p>
-  </footer>
+  <div class="placeholder">
+    Product images and video coming soon
+  </div>
+</div>
+
+<section id="watch">
+  <h2>The Watch</h2>
+
+  <p>
+    A minimalist watch built around one small idea.
+  </p>
+
+  <p>
+    The second hand ends with a tennis ball. Once every minute, it reaches the dog’s nose. A quiet detail you notice only if you look closely.
+  </p>
+
+  <p>
+    The moving ball is not a printed illusion. It is a custom produced second hand created specifically for this design. It required its own development and tooling, made only for this project.
+  </p>
+
+  <div class="highlight-box">
+    <strong>First production batch</strong><br><br>
+    Custom second hand component<br>
+    Independent small run<br>
+    Shipped directly from Poland<br>
+    Available only through our official Etsy store
+    <div class="status">First batch arriving April 2026</div>
+  </div>
+
+  <p>
+    This is not a catalog watch with a logo added. It was designed independently and produced in a limited quantity to test whether others enjoy this small one minute ritual as much as we do.
+  </p>
+</section>
+
+<section id="about">
+  <h2>About the Project</h2>
+
+  <p>
+    Second Pet is an independent design project based in Poland.
+  </p>
+
+  <p>
+    The focus is not on luxury positioning or technical specifications. It is about thoughtful design and small repeatable moments that add character to an everyday object.
+  </p>
+
+  <p>
+    Each watch from this batch is physically produced, inspected before shipping, and sent directly from Poland to its new owner.
+  </p>
+
+  <p>
+    Designed independently. Produced in a small batch. Available only here.
+  </p>
+</section>
+
+<footer id="contact">
+  <p>Independent design project based in Poland. Shipping worldwide.</p>
+  <p>
+    Questions? Reach out via 
+    <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111; font-weight:700; text-decoration:none;">
+      Instagram
+    </a>
+  </p>
+</footer>
 
 </body>
 </html>
