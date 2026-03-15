@@ -42,6 +42,8 @@
         transition:opacity 0.3s;
     }
 
+    nav a:hover { opacity:0.6; }
+
     .lang-switch {
         position:absolute;
         right:20px;
@@ -139,13 +141,22 @@
         .trust-badges { grid-template-columns: 1fr 1fr; }
     }
 
-    /* Ukrywanie elementów językowych */
-    [lang="pl"], [lang="en"] { display: none; }
-    body.lang-pl [lang="pl"] { display: block; }
-    body.lang-en [lang="en"] { display: block; }
-    /* Specjalny fix dla inline-block (np. przyciski) */
-    body.lang-pl .cta[lang="pl"] { display: inline-block; }
-    body.lang-en .cta[lang="en"] { display: inline-block; }
+    /* --- LOGIKA ZMIANY JĘZYKA --- */
+    
+    /* 1. Domyślnie ukrywamy wszystkie teksty wielojęzyczne */
+    [data-lang="pl"], [data-lang="en"] { display: none; }
+    
+    /* 2. Pokazujemy elementy blokowe dla aktywnego języka */
+    body.lang-pl [data-lang="pl"] { display: block; }
+    body.lang-en [data-lang="en"] { display: block; }
+
+    /* 3. Wyjątki dla elementów "w linii" (np. teksty w placeholderze, ikonki w liście) */
+    body.lang-pl span[data-lang="pl"], 
+    body.lang-en span[data-lang="en"] { display: inline; }
+
+    /* 4. Wyjątki dla przycisków CTA */
+    body.lang-pl a.cta[data-lang="pl"], 
+    body.lang-en a.cta[data-lang="en"] { display: inline-block; }
 
 </style>
 </head>
@@ -153,12 +164,12 @@
 <body class="lang-en">
 
 <nav>
-    <a href="#watch" lang="en">The Watch</a>
-    <a href="#watch" lang="pl">O zegarku</a>
-    <a href="#about" lang="en">Project</a>
-    <a href="#about" lang="pl">O projekcie</a>
-    <a href="#contact" lang="en">Contact</a>
-    <a href="#contact" lang="pl">Kontakt</a>
+    <a href="#watch" data-lang="en">The Watch</a>
+    <a href="#watch" data-lang="pl">O zegarku</a>
+    <a href="#about" data-lang="en">Project</a>
+    <a href="#about" data-lang="pl">O projekcie</a>
+    <a href="#contact" data-lang="en">Contact</a>
+    <a href="#contact" data-lang="pl">Kontakt</a>
 
     <div class="lang-switch">
         <span class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</span> | 
@@ -171,90 +182,90 @@
         <img src="SECOND_PET-removebg-preview.png" alt="Second Pet logo">
     </div>
 
-    <div class="tagline" lang="en">A small joy, every minute.</div>
-    <div class="tagline" lang="pl">Mała radość w każdej minucie.</div>
+    <div class="tagline" data-lang="en">A small joy, every minute.</div>
+    <div class="tagline" data-lang="pl">Mała radość w każdej minucie.</div>
 
-    <a class="cta" lang="en" href="https://www.etsy.com/shop/SecondPet" target="_blank">Launching on Etsy April 2026</a>
-    <a class="cta" lang="pl" href="https://www.etsy.com/shop/SecondPet" target="_blank">Premiera na Etsy - Kwiecień 2026</a>
+    <a class="cta" data-lang="en" href="https://www.etsy.com/shop/SecondPet" target="_blank">Launching on Etsy April 2026</a>
+    <a class="cta" data-lang="pl" href="https://www.etsy.com/shop/SecondPet" target="_blank">Premiera na Etsy - Kwiecień 2026</a>
 
     <div class="placeholder">
-        <span lang="en">Product images and video coming soon</span>
-        <span lang="pl">Zdjęcia i wideo produktu już wkrótce</span>
+        <span data-lang="en">Product images and video coming soon</span>
+        <span data-lang="pl">Zdjęcia i wideo produktu już wkrótce</span>
     </div>
 </div>
 
 <section id="watch">
-    <h2 lang="en">About "Catch" Model</h2>
-    <h2 lang="pl">O modelu „Łap”</h2>
+    <h2 data-lang="en">About "Catch" Model</h2>
+    <h2 data-lang="pl">O modelu „Łap”</h2>
 
-    <p lang="en">
+    <p data-lang="en">
         This design was born from joyful moments spent with a dog — moments you can carry on your wrist. 
         On the dial lives your Second Pet, patiently waiting for the tennis ball to reach its mouth. 
         Every minute the dog gets a small moment of joy.
     </p>
-    <p lang="pl">
+    <p data-lang="pl">
         Oto design zrodzony z radosnych chwil spędzanych z psem — chwil, które możesz zawsze mieć na swoim nadgarstku. 
         Na tarczy mieszka Twój „Drugi Pupil”, który cierpliwie czeka, aż piłka trafi do jego pyska. 
         Co każdą pełną minutę pies przeżywa mały moment szczęścia.
     </p>
 
-    <p lang="en">
+    <p data-lang="en">
         The watch features a universal 41 mm case size suitable for both women and men. 
         The silver sunburst dial adds depth while the dark grey markers keep the time easy to read. 
         The highlight of the design is the custom tennis-ball seconds hand, created specifically for this project.
     </p>
-    <p lang="pl">
+    <p data-lang="pl">
         Zegarek posiada uniwersalną kopertę 41 mm, która pasuje zarówno na kobiece, jak i męskie nadgarstki. 
         Srebrzysta tarcza ze szlifem słonecznym dodaje głębi, a ciemnoszare indeksy ułatwiają odczyt godziny. 
         Sercem projektu jest unikalny sekundnik z piłką tenisową, wyprodukowany specjalnie na potrzeby tego modelu.
     </p>
 
     <div class="highlight-box">
-        <h3 lang="en">First Production Batch</h3>
-        <h3 lang="pl">Pierwsza Seria Produkcyjna</h3>
+        <h3 data-lang="en">First Production Batch</h3>
+        <h3 data-lang="pl">Pierwsza Seria Produkcyjna</h3>
 
         <div class="trust-badges">
-            <div class="badge-item">⚙️ <span lang="en">Custom components</span><span lang="pl">Dedykowane części</span></div>
-            <div class="badge-item">🇵🇱 <span lang="en">Shipped from Poland</span><span lang="pl">Wysyłka z Polski</span></div>
-            <div class="badge-item">📦 <span lang="en">Independent small run</span><span lang="pl">Niezależna, krótka seria</span></div>
-            <div class="badge-item">✅ <span lang="en">Quality inspected</span><span lang="pl">Sprawdzany przed wysyłką</span></div>
+            <div class="badge-item">⚙️ <span data-lang="en">Custom components</span><span data-lang="pl">Dedykowane części</span></div>
+            <div class="badge-item">🇵🇱 <span data-lang="en">Shipped from Poland</span><span data-lang="pl">Wysyłka z Polski</span></div>
+            <div class="badge-item">📦 <span data-lang="en">Independent small run</span><span data-lang="pl">Niezależna, krótka seria</span></div>
+            <div class="badge-item">✅ <span data-lang="en">Quality inspected</span><span data-lang="pl">Sprawdzany przed wysyłką</span></div>
         </div>
     </div>
 </section>
 
 <section id="about">
-    <h2 lang="en">About Project</h2>
-    <h2 lang="pl">O projekcie</h2>
+    <h2 data-lang="en">About Project</h2>
+    <h2 data-lang="pl">O projekcie</h2>
 
-    <p lang="en">
+    <p data-lang="en">
         Second Pet is an independent design project based in Poland. Started in 2026 with the goal 
         of creating playful watch designs that add character to everyday objects.
     </p>
-    <p lang="pl">
+    <p data-lang="pl">
         Second Pet to niezależny projekt projektowy z Polski. Rozpoczęty w 2026 roku z myślą 
         o tworzeniu nietypowych zegarków, które nadają charakter przedmiotom codziennego użytku.
     </p>
 
-    <p lang="en">Follow us on Instagram to stay updated about new designs and releases.</p>
-    <p lang="pl">Obserwuj nas na Instagramie, aby być na bieżąco z nowymi projektami i premierami.</p>
+    <p data-lang="en">Follow us on Instagram to stay updated about new designs and releases.</p>
+    <p data-lang="pl">Obserwuj nas na Instagramie, aby być na bieżąco z nowymi projektami i premierami.</p>
 </section>
 
 <footer id="contact">
-    <p lang="en">Questions? Reach out via <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111;font-weight:700;">Instagram</a>.</p>
-    <p lang="pl">Masz pytania? Napisz do nas na <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111;font-weight:700;">Instagramie</a>.</p>
+    <p data-lang="en">Questions? Reach out via <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111;font-weight:700;">Instagram</a>.</p>
+    <p data-lang="pl">Masz pytania? Napisz do nas na <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111;font-weight:700;">Instagramie</a>.</p>
 </footer>
 
 <script>
 function setLang(lang){
-    // Zmiana klasy w body steruje wyświetlaniem przez CSS
+    // Podmiana klasy w body
     document.body.className = 'lang-' + lang;
     
-    // Wizualna zmiana aktywności przycisków
+    // Zmiana podkreślenia przełącznika języka
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById('btn-' + lang).classList.add('active');
 }
 
-// Ustawienie domyślne na polski, jeśli chcesz, by babcia od razu widziała PL
+// Inicjalizacja domyślnego języka na podstawie klasy z body
 setLang('en'); 
 </script>
 
