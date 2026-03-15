@@ -1,231 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Second Pet | A small joy, every minute</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="favicon-32x32.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Pet</title>
 
-  <style>
-    * { box-sizing: border-box; scroll-behavior: smooth; }
+<style>
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:#f8f8f8;
+color:#222;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #111;
-      line-height: 1.7;
-    }
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:white;
+border-bottom:1px solid #ddd;
+}
 
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.95);
-      z-index: 1000;
-      border-bottom: 1px solid #f0f0f0;
-    }
+nav a{
+margin-right:20px;
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #111;
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: opacity 0.3s;
-    }
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
 
-    nav a:hover { opacity: 0.6; }
+h1,h2{
+margin-top:40px;
+}
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 140px 20px 60px 20px;
-      text-align: center;
-    }
+.lang{
+cursor:pointer;
+font-size:22px;
+margin-left:10px;
+}
 
-    .logo img {
-      width: 240px;
-      margin-bottom: 20px;
-    }
+.cta{
+display:inline-block;
+margin-top:20px;
+padding:12px 22px;
+background:black;
+color:white;
+text-decoration:none;
+border-radius:5px;
+}
 
-    .tagline {
-      font-size: 18px;
-      color: #444;
-      margin-bottom: 25px;
-    }
-
-    .cta {
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-decoration: none;
-      background: #111;
-      color: #fff;
-      border-radius: 2px;
-      margin-bottom: 40px;
-    }
-
-    .placeholder {
-      width: 100%;
-      max-width: 600px;
-      height: 260px;
-      background: #f4f4f4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: #777;
-      margin-top: 20px;
-    }
-
-    section {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 120px 25px;
-    }
-
-    h2 {
-      font-size: 32px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    p {
-      font-size: 15px;
-      color: #444;
-      margin-bottom: 18px;
-    }
-
-    .highlight-box {
-      background: #f9f9f9;
-      padding: 40px;
-      margin: 40px 0;
-      text-align: center;
-    }
-
-    .status {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #888;
-      margin-top: 15px;
-      display: inline-block;
-    }
-
-    footer {
-      padding: 80px 20px;
-      text-align: center;
-      border-top: 1px solid #eee;
-      font-size: 14px;
-    }
-
-    @media (min-width: 768px) {
-      .logo img { width: 300px; }
-      .tagline { font-size: 20px; }
-      h2 { font-size: 36px; }
-    }
-  </style>
+footer{
+margin-top:60px;
+padding:30px;
+text-align:center;
+background:white;
+border-top:1px solid #ddd;
+}
+</style>
 </head>
 
 <body>
 
-<nav>
-  <a href="#watch">The Watch</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-</nav>
+<header>
 
-<div class="hero">
-  <div class="logo">
-    <img src="SECOND_PET-removebg-preview.png" alt="Second Pet logo">
-  </div>
-
-  <div class="tagline">
-    A small joy, every minute.
-  </div>
-
-  <a class="cta" href="https://www.etsy.com" target="_blank">
-    Launching on Etsy April 2026
-  </a>
-
-  <div class="placeholder">
-    Product images and video coming soon
-  </div>
+<div>
+<strong>Second Pet</strong>
 </div>
 
+<nav>
+<a href="#watch">About Catch!</a>
+<a href="#project">About Project</a>
+<a href="https://www.etsy.com/shop/SecondPet" target="_blank">Shop</a>
+</nav>
+
+<div>
+<span class="lang" onclick="setLang('en')">🇬🇧</span>
+<span class="lang" onclick="setLang('pl')">🇵🇱</span>
+</div>
+
+</header>
+
+<div class="container">
+
+<!-- ABOUT WATCH -->
+
 <section id="watch">
-  <h2>The Watch</h2>
 
-  <p>
-    A minimalist watch built around one small idea.
-  </p>
+<h1 class="en">About Catch!</h1>
+<h1 class="pl">O modelu Łap!</h1>
 
-  <p>
-    The second hand ends with a tennis ball. Once every minute, it reaches the dog’s mouth. A quiet detail you notice only if you look closely.
-  </p>
+<p class="pl">
+Ten design powstał z radosnych chwil spędzanych z psem – chwil,
+które możesz zabrać ze sobą na nadgarstku. Na tarczy zegarka znajduje się
+Twój Drugi Zwierzak (Second Pet), który z niecierpliwością czeka,
+aż piłka trafi do jego pyska. Co minutę pies przeżywa swój mały moment
+szczęścia.
+</p>
 
-  <p>
-    The moving ball is not a printed illusion. It is a custom produced second hand created specifically for this design. It required its own development and tooling, made only for this project.
-  </p>
+<p class="en">
+This design was born from joyful moments spent with a dog —
+moments you can now carry on your wrist. On the dial lives your
+Second Pet, patiently waiting for the tennis ball to land in its mouth.
+Every minute the dog gets another moment of pure joy.
+</p>
 
-  <div class="highlight-box">
-    <strong>First production batch</strong><br><br>
-    Custom second hand component<br>
-    Independent small run<br>
-    Shipped directly from Poland<br>
-    Available only through our official Etsy store
-    <div class="status">First batch arriving April 2026</div>
-  </div>
+<h2 class="pl">Opis</h2>
+<h2 class="en">Description</h2>
 
-  <p>
-    It was designed independently and produced in a limited quantity to test whether others enjoy this small one minute ritual as much as we do.
-  </p>
+<p class="pl">
+Zegarek ma uniwersalną wielkość koperty 41 mm i pasuje zarówno
+kobietom jak i mężczyznom. Tarcza została zaprojektowana tak,
+aby połączyć oryginalny wzór z czytelnością.
+Srebrny motyw sunburst nadaje głębi, a ciemnoszare indeksy godzin
+pozwalają łatwo odczytać czas bez przyciągania nadmiernej uwagi.
+</p>
+
+<p class="pl">
+Twój Drugi Zwierzak leży zawinięty wokół tarczy, cierpliwie
+czekając na nadlatującą piłkę. Jego nos wskazuje godzinę 12,
+a czarne kropki oznaczają godziny 3, 6 i 9.
+Najważniejszym elementem projektu jest sekundnik zakończony
+piłką tenisową – wykonany specjalnie na zamówienie.
+To jedyny projekt zegarka wykorzystujący taką wskazówkę
+i jedyny psi motyw, który w ten sposób bawi się elementami zegarka.
+</p>
+
+<p class="en">
+The watch features a universal 41 mm case size suitable
+for both women and men. The dial was designed to balance
+a playful design with everyday usability.
+The silver sunburst texture adds depth, while dark grey hour
+markers keep the time easy to read without being visually loud.
+</p>
+
+<p class="en">
+Your Second Pet curls around the dial, patiently waiting for
+the incoming tennis ball. Its nose marks the 12 o’clock position,
+while the black dots represent the 3, 6 and 9 hour markers.
+The highlight of the design is the custom tennis-ball seconds hand,
+created specifically for this watch. It is a unique solution not seen
+in other watch designs and a playful way of integrating the dog
+theme directly into the mechanics of time.
+</p>
+
+<h2 class="pl">Podsumowanie</h2>
+<h2 class="en">Summary</h2>
+
+<p class="pl">
+Przygarnij swojego Drugiego Zwierzaka (Second Pet)
+i sprawiaj mu radość 1440 razy dziennie.
+Bez konieczności rzucania piłki,
+biegania po nią i martwienia się,
+że pies ją rozgryzie.
+</p>
+
+<p class="en">
+Adopt your Second Pet and bring it joy
+1,440 times a day — without throwing the ball,
+running after it, or worrying that it will
+be chewed to pieces.
+</p>
+
+<a class="cta" href="https://www.etsy.com/shop/SecondPet" target="_blank">View on Etsy</a>
+
 </section>
 
-<section id="about">
-  <h2>About the Project</h2>
 
-  <p>
-    Second Pet is an independent design project based in Poland.
-  </p>
+<!-- ABOUT PROJECT -->
 
-  <p>
-    The focus is not on luxury positioning or technical specifications. It is about thoughtful design and small repeatable moments that add character to an everyday object.
-  </p>
+<section id="project">
 
-  <p>
-    Each watch from this batch is physically produced, inspected before shipping, and sent directly from Poland to its new owner.
-  </p>
+<h1 class="en">About Project</h1>
+<h1 class="pl">O projekcie</h1>
 
-  <p>
-    Make sure to follow us and be updated with new designs. Available only here.
-  </p>
+<p class="en">
+Second Pet is an independent watch design project based in Poland.
+It started in 2026 with the goal of creating original watch concepts
+that bring a bit of joy to something you wear every day.
+Each design combines playful ideas with thoughtful form.
+</p>
+
+<p class="pl">
+Second Pet to niezależny projekt zegarkowy z Polski.
+Powstał w 2026 roku z myślą o tworzeniu nowatorskich projektów,
+które można z radością nosić na nadgarstku każdego dnia.
+Każdy model łączy nietypowy pomysł z przemyślaną formą.
+</p>
+
+<p class="en">
+Every watch is shipped from Poland and carefully inspected
+before being sent out. It is packed in a protective hard case
+to make sure your Second Pet arrives safely —
+even despite the best efforts of shipping companies.
+Small extras are also included inside the package.
+</p>
+
+<p class="pl">
+Każdy zegarek wysyłany jest z Polski i przed wysyłką
+dokładnie sprawdzany. Pakujemy go w twarde etui,
+aby Twój Drugi Zwierzak dotarł w świetnej kondycji —
+nawet mimo starań firm kurierskich.
+W środku znajdziesz też małe niespodzianki.
+</p>
+
+<p class="en">
+Make sure to follow us on Instagram to stay updated
+about new designs and upcoming releases.
+</p>
+
+<p class="pl">
+Obserwuj nas na Instagramie, aby być na bieżąco
+z nowymi projektami i kolejnymi premierami.
+</p>
+
 </section>
 
-<footer id="contact">
-  <p>Independent design project based in Poland. Shipping worldwide.</p>
-  <p>
-    Questions? Reach out via 
-    <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111; font-weight:700; text-decoration:none;">
-      Instagram
-    </a>
-  </p>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<h1 class="en">Contact</h1>
+<h1 class="pl">Kontakt</h1>
+
+<p class="pl">
+Chętnie pomożemy w razie pytań.
+Skontaktuj się z nami przez Instagram.
+</p>
+
+<p class="en">
+We’re happy to help if you have any questions.
+Reach out via Instagram.
+</p>
+
+<a class="cta" href="https://instagram.com/" target="_blank">Instagram</a>
+
+</section>
+
+</div>
+
+<footer>
+Second Pet © 2026
 </footer>
+
+<script>
+
+function setLang(lang){
+
+document.querySelectorAll('.pl').forEach(el=>{
+el.style.display = lang === 'pl' ? 'block' : 'none'
+})
+
+document.querySelectorAll('.en').forEach(el=>{
+el.style.display = lang === 'en' ? 'block' : 'none'
+})
+
+}
+
+setLang('en')
+
+</script>
 
 </body>
 </html>
