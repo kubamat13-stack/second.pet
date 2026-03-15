@@ -134,7 +134,6 @@
 
     footer { padding:60px 20px; text-align:center; border-top:1px solid #eee; font-size:15px; background: #fafafa; }
     
-    /* Poprawka dla stopki - nadpisuje wyjustowanie tekstu z sekcji P */
     #contact p { text-align: center; }
 
     @media (min-width:768px){
@@ -198,24 +197,25 @@
 
     <p data-lang="en">
         This design was born from joyful moments spent with a dog — moments you can carry on your wrist. 
-        On the dial lives your Second Pet, patiently waiting for the tennis ball to reach its mouth. 
-        Every minute the dog gets a small moment of joy.
+        On the dial lives your Second Pet, patiently waiting for the tennis ball to land in its mouth. Every minute the dog gets another moment of pure joy.
     </p>
     <p data-lang="pl">
-        Oto design zrodzony z radosnych chwil spędzanych z psem — chwil, które możesz zawsze mieć na swoim nadgarstku. 
-        Na tarczy mieszka Twój „Drugi Pupil”, który cierpliwie czeka, aż piłka trafi do jego pyska. 
-        Co każdą pełną minutę pies przeżywa mały moment szczęścia.
+        Oto design zrodzony z radosnych chwil spędzanych z psem — chwil, które możesz zabrać ze sobą na nadgarstku. 
+        Na tarczy zegarka znajduje się Twój Drugi Zwierzak (Second Pet), który z niecierpliwością czeka, aż piłka trafi do jego pyska. Co minutę pies przeżywa swój mały moment szczęścia.
     </p>
 
     <p data-lang="en">
-        The watch features a universal 41 mm case size suitable for both women and men. 
-        The silver sunburst dial adds depth while the dark grey markers keep the time easy to read. 
-        The highlight of the design is the custom tennis-ball seconds hand, created specifically for this project.
+        The watch features a universal 41 mm case size suitable for both women and men. The dial was designed to balance a playful design with everyday usability. The silver sunburst texture adds depth, while dark grey hour markers keep the time easy to read without being visually loud.
     </p>
     <p data-lang="pl">
-        Zegarek posiada uniwersalną kopertę 41 mm, która pasuje zarówno na kobiece, jak i męskie nadgarstki. 
-        Srebrzysta tarcza ze szlifem słonecznym dodaje głębi, a ciemnoszare indeksy ułatwiają odczyt godziny. 
-        Sercem projektu jest unikalny sekundnik z piłką tenisową, wyprodukowany specjalnie na potrzeby tego modelu.
+        Zegarek ma uniwersalną wielkość koperty 41 mm i pasuje zarówno kobietom jak i mężczyznom. Tarcza została zaprojektowana tak, aby połączyć oryginalny wzór z czytelnością. Srebrny motyw sunburst nadaje głębi, a ciemnoszare indeksy godzin pozwalają łatwo odczytać czas bez przyciągania nadmiernej uwagi.
+    </p>
+
+    <p data-lang="en">
+        Your Second Pet curls around the dial, patiently waiting for the incoming tennis ball. Its nose marks the 12 o’clock position, while the black dots represent the 3, 6 and 9 hour markers. The highlight of the design is the custom tennis-ball seconds hand, created specifically for this watch.
+    </p>
+    <p data-lang="pl">
+        Twój Drugi Zwierzak leży zawinięty wokół tarczy, cierpliwie czekając na nadlatującą piłkę. Jego nos wskazuje godzinę 12, a czarne kropki oznaczają godziny 3, 6 i 9. Najważniejszym elementem projektu jest sekundnik zakończony piłką tenisową – wykonany specjalnie na zamówienie.
     </p>
 
     <div class="highlight-box">
@@ -271,15 +271,12 @@
 
 <script>
 function setLang(lang){
-    // Podmiana klasy w body
     document.body.className = 'lang-' + lang;
     
-    // Zmiana podkreślenia przełącznika języka
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById('btn-' + lang).classList.add('active');
 }
 
-// Inicjalizacja domyślnego języka na podstawie klasy z body
 setLang('en'); 
 </script>
 
