@@ -133,6 +133,9 @@
     .badge-item { font-size: 14px; font-weight: 600; color: #555; display: flex; align-items: center; gap: 10px; }
 
     footer { padding:60px 20px; text-align:center; border-top:1px solid #eee; font-size:15px; background: #fafafa; }
+    
+    /* Poprawka dla stopki - nadpisuje wyjustowanie tekstu z sekcji P */
+    #contact p { text-align: center; }
 
     @media (min-width:768px){
         .logo img { width:320px; }
@@ -142,19 +145,14 @@
     }
 
     /* --- LOGIKA ZMIANY JĘZYKA --- */
-    
-    /* 1. Domyślnie ukrywamy wszystkie teksty wielojęzyczne */
     [data-lang="pl"], [data-lang="en"] { display: none; }
     
-    /* 2. Pokazujemy elementy blokowe dla aktywnego języka */
     body.lang-pl [data-lang="pl"] { display: block; }
     body.lang-en [data-lang="en"] { display: block; }
 
-    /* 3. Wyjątki dla elementów "w linii" (np. teksty w placeholderze, ikonki w liście) */
     body.lang-pl span[data-lang="pl"], 
     body.lang-en span[data-lang="en"] { display: inline; }
 
-    /* 4. Wyjątki dla przycisków CTA */
     body.lang-pl a.cta[data-lang="pl"], 
     body.lang-en a.cta[data-lang="en"] { display: inline-block; }
 
@@ -231,6 +229,13 @@
             <div class="badge-item">✅ <span data-lang="en">Quality inspected</span><span data-lang="pl">Sprawdzany przed wysyłką</span></div>
         </div>
     </div>
+
+    <p data-lang="en">
+        Adopt your Second Pet and bring it joy 1440 times a day! All without having to fetch the ball, throw it, or worry about your dog chewing it up.
+    </p>
+    <p data-lang="pl">
+        Przygarnij swojego Drugiego Zwierzaka (Second Pet) i sprawiaj mu radość 1440 razy dziennie! Przy okazji nie musisz iść po piłkę, rzucać jej, ani martwić się o to, że pies ją rozgryzie.
+    </p>
 </section>
 
 <section id="about">
@@ -238,16 +243,25 @@
     <h2 data-lang="pl">O projekcie</h2>
 
     <p data-lang="en">
-        Second Pet is an independent design project based in Poland. Started in 2026 with the goal 
-        of creating playful watch designs that add character to everyday objects.
+        Second Pet started in 2026 with the goal of creating innovative concepts that bring joy to your wrist. The projects I work on combine uniqueness and fresh ideas with thoughtful design.
     </p>
     <p data-lang="pl">
-        Second Pet to niezależny projekt projektowy z Polski. Rozpoczęty w 2026 roku z myślą 
-        o tworzeniu nietypowych zegarków, które nadają charakter przedmiotom codziennego użytku.
+        Projekt Second Pet wystartował w 2026 roku z myślą o tworzeniu nowatorskich rozwiązań, które z radością można nosić na nadgarstku. Projekty, nad którymi pracuję, łączy innowacyjność i nietuzinkowość ujęte w przemyślanej formie.
     </p>
 
-    <p data-lang="en">Follow us on Instagram to stay updated about new designs and releases.</p>
-    <p data-lang="pl">Obserwuj nas na Instagramie, aby być na bieżąco z nowymi projektami i premierami.</p>
+    <p data-lang="en">
+        Every watch is shipped directly from Poland. Before heading out, it is carefully inspected and packed in a protective hard case to ensure your Second Pet arrives in perfect condition – despite the best efforts of courier companies. 😉 I also include a small souvenir with every order.
+    </p>
+    <p data-lang="pl">
+        Każdy zegarek wysyłany jest z Poznania. Przed wyruszeniem w drogę zostaje dokładnie sprawdzony i zapakowany w twarde etui, aby Twój Drugi Zwierzak dotarł do Ciebie w świetnej kondycji – mimo największych starań firm kurierskich. 😉 Do każdej paczki dorzucam też drobną pamiątkę.
+    </p>
+
+    <p data-lang="en">
+        Make sure to follow us on <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111;font-weight:700;">Instagram</a> to stay updated on new designs and offers.
+    </p>
+    <p data-lang="pl">
+        Koniecznie zaobserwujcie nas na <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111;font-weight:700;">Instagramie</a>, aby być na bieżąco z nowymi projektami i ofertami.
+    </p>
 </section>
 
 <footer id="contact">
