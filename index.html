@@ -25,7 +25,8 @@
         width:100%;
         display:flex;
         justify-content:center;
-        gap:20px;
+        align-items:center;
+        gap:25px;
         padding:20px;
         background:rgba(255,255,255,0.98);
         z-index:1000;
@@ -44,12 +45,13 @@
 
     nav a:hover { opacity:0.6; }
 
+    /* Nowa sekcja przełącznika wewnątrz nav */
     .lang-switch {
-        position:absolute;
-        right:20px;
-        top:20px;
         font-size:12px;
         font-weight:700;
+        border-left: 1px solid #eee;
+        padding-left: 20px;
+        white-space: nowrap;
     }
 
     .lang-btn {
@@ -136,6 +138,22 @@
     
     #contact p { text-align: center; }
 
+    /* Responsywność dla mobile */
+    @media (max-width: 600px) {
+        nav {
+            gap: 12px;
+            padding: 15px 10px;
+            flex-wrap: wrap;
+        }
+        .lang-switch {
+            border-left: none;
+            padding-left: 0;
+            width: 100%;
+            text-align: center;
+            margin-top: 5px;
+        }
+    }
+
     @media (min-width:768px){
         .logo img { width:320px; }
         .tagline { font-size:24px; }
@@ -169,7 +187,8 @@
     <a href="#contact" data-lang="pl">Kontakt</a>
 
     <div class="lang-switch">
-        <span class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</span> | 
+        <span class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</span>
+        <span style="opacity:0.3">|</span> 
         <span class="lang-btn" id="btn-pl" onclick="setLang('pl')">PL</span>
     </div>
 </nav>
