@@ -45,7 +45,6 @@
 
     nav a:hover { opacity:0.6; }
 
-    /* Nowa sekcja przełącznika wewnątrz nav */
     .lang-switch {
         font-size:12px;
         font-weight:700;
@@ -138,20 +137,9 @@
     
     #contact p { text-align: center; }
 
-    /* Responsywność dla mobile */
     @media (max-width: 600px) {
-        nav {
-            gap: 12px;
-            padding: 15px 10px;
-            flex-wrap: wrap;
-        }
-        .lang-switch {
-            border-left: none;
-            padding-left: 0;
-            width: 100%;
-            text-align: center;
-            margin-top: 5px;
-        }
+        nav { gap: 12px; padding: 15px 10px; flex-wrap: wrap; }
+        .lang-switch { border-left: none; padding-left: 0; width: 100%; text-align: center; margin-top: 5px; }
     }
 
     @media (min-width:768px){
@@ -161,26 +149,19 @@
         .trust-badges { grid-template-columns: 1fr 1fr; }
     }
 
-    /* --- LOGIKA ZMIANY JĘZYKA --- */
     [data-lang="pl"], [data-lang="en"] { display: none; }
-    
     body.lang-pl [data-lang="pl"] { display: block; }
     body.lang-en [data-lang="en"] { display: block; }
-
-    body.lang-pl span[data-lang="pl"], 
-    body.lang-en span[data-lang="en"] { display: inline; }
-
-    body.lang-pl a.cta[data-lang="pl"], 
-    body.lang-en a.cta[data-lang="en"] { display: inline-block; }
-
+    body.lang-pl span[data-lang="pl"], body.lang-en span[data-lang="en"] { display: inline; }
+    body.lang-pl a.cta[data-lang="pl"], body.lang-en a.cta[data-lang="en"] { display: inline-block; }
 </style>
 </head>
 
 <body class="lang-en">
 
 <nav>
-    <a href="#watch" data-lang="en">The Watch</a>
-    <a href="#watch" data-lang="pl">O zegarku</a>
+    <a href="#models" data-lang="en">Models</a>
+    <a href="#models" data-lang="pl">Modele</a>
     <a href="#about" data-lang="en">Project</a>
     <a href="#about" data-lang="pl">O projekcie</a>
     <a href="#contact" data-lang="en">Contact</a>
@@ -197,50 +178,72 @@
     <div class="logo">
         <img src="SECOND_PET-removebg-preview.png" alt="Second Pet logo">
     </div>
-
     <div class="tagline" data-lang="en">A small joy, every minute.</div>
     <div class="tagline" data-lang="pl">Mała radość w każdej minucie.</div>
-
     <a class="cta" data-lang="en" href="https://www.etsy.com/shop/SecondPet" target="_blank">Launching on Etsy April 2026</a>
     <a class="cta" data-lang="pl" href="https://www.etsy.com/shop/SecondPet" target="_blank">Premiera na Etsy - Kwiecień 2026</a>
-
     <div class="placeholder">
-        <span data-lang="en">Product images and video coming soon</span>
-        <span data-lang="pl">Zdjęcia i wideo produktu już wkrótce</span>
+        <span data-lang="en">New models and photos coming soon</span>
+        <span data-lang="pl">Nowe modele i zdjęcia już wkrótce</span>
     </div>
 </div>
 
-<section id="watch">
-    <h2 data-lang="en">About "Catch" Model</h2>
-    <h2 data-lang="pl">O modelu „Łap”</h2>
+<section id="models">
+    <!-- MODEL YIN YANG -->
+    <h2 data-lang="en">Yin Yang Model</h2>
+    <h2 data-lang="pl">Model Yin Yang</h2>
 
     <p data-lang="en">
-        This design was born from joyful moments spent with a dog - moments you can carry on your wrist. 
-        On the dial lives your Second Pet, patiently waiting for the tennis ball to land in its mouth. Every minute the dog gets another moment of pure joy.
+        A model featuring a custom-designed dial, produced in a limited run of 100 units. Its central motif depicts two cats arranged in a composition inspired by the yin yang symbol. Their cheerful expressions bring a sense of lightness, while the symbolism serves as a reminder of balance and the natural cycle of change—where better times always follow the difficult ones.
     </p>
     <p data-lang="pl">
-        Oto design zrodzony z radosnych chwil spędzanych z psem - chwil, które możesz zabrać ze sobą na nadgarstku. 
-        Na tarczy zegarka znajduje się Twój Drugi Zwierzak (Second Pet), który z niecierpliwością czeka, aż piłka trafi do jego pyska. Co minutę pies przeżywa swój mały moment szczęścia.
-    </p>
-
-    <p data-lang="en">
-        The watch features a universal 41 mm case size suitable for both women and men. The dial was designed to balance a playful design with everyday usability. The silver sunburst texture adds depth, while dark grey hour markers keep the time easy to read without being visually loud.
-    </p>
-    <p data-lang="pl">
-        Zegarek ma uniwersalną wielkość koperty 41 mm i pasuje zarówno kobietom jak i mężczyznom. Tarcza została zaprojektowana tak, aby połączyć oryginalny wzór z czytelnością. Srebrny motyw sunburst nadaje głębi, a ciemnoszare indeksy godzin pozwalają łatwo odczytać czas bez przyciągania nadmiernej uwagi.
+        Model z autorską tarczą wyprodukowaną na zamówienie w limitowanej ilości 100 sztuk. Jej centralnym motywem są dwa koty, które układają się w kompozycję inspirowaną symbolem yin yang. Ich pogodne wyrazy pyszczków wprowadzają lekkość, a sama symbolika przypomina o równowadze i naturalnym cyklu zmian, gdzie po trudniejszych momentach przychodzą lepsze.
     </p>
 
     <p data-lang="en">
-        Your Second Pet curls around the dial, patiently waiting for the incoming tennis ball. Its nose marks the 12 o’clock position, while the black dots represent the 3, 6 and 9 hour markers. The highlight of the design is the custom tennis-ball seconds hand, created specifically for this watch.
+        Designed to blend a friendly aesthetic with attention to detail and legibility, all within a minimalist form. The hour markers are inspired by the stripes on the cats' backs, and their ears double as indicators for the 12 and 6 o'clock positions.
     </p>
     <p data-lang="pl">
-        Twój Drugi Zwierzak leży zawinięty wokół tarczy, cierpliwie czekając na nadlatującą piłkę. Jego nos wskazuje godzinę 12, a czarne kropki oznaczają godziny 3, 6 i 9. Najważniejszym elementem projektu jest sekundnik zakończony piłką tenisową – wykonany specjalnie na zamówienie.
+        Projekt powstał z myślą o połączeniu przyjaznej estetyki z dbałością o detale i czytelnością, przy zachowaniu minimalistycznej formy. Indeksy godzin nawiązują do prążków na grzbietach kotów, a ich uszy pełnią jednocześnie funkcję oznaczeń godzin 12 i 6.
+    </p>
+
+    <p data-lang="en">
+        The 36 mm case has a universal character and sits comfortably on most wrists. The black stainless steel bracelet enhances the overall look and ensures durability for daily use. An adjustable clasp allows for precise fitting, ensuring the watch rests perfectly on the hand.
+    </p>
+    <p data-lang="pl">
+        Koperta o średnicy 36 mm ma uniwersalny charakter i dobrze układa się na większości nadgarstków. Czarna bransoleta ze stali nierdzewnej podkreśla całość i zapewnia trwałość w codziennym użytkowaniu. Regulowane zapięcie umożliwia precyzyjne dopasowanie, dzięki czemu zegarek wygodnie przylega do ręki.
+    </p>
+
+    <hr style="border:0; border-top:1px solid #eee; margin:60px 0;">
+
+    <!-- MODEL CATCH -->
+    <h2 data-lang="en">"Catch" Model</h2>
+    <h2 data-lang="pl">Model "Catch"</h2>
+
+    <p data-lang="en">
+        Design inspired by carefree moments spent with a dog, which you can now carry with you at all times. On the dial, your Second Pet appears—alert and focused, as if ready to catch a flying ball at any second. With every passing minute, the scene comes alive, recalling that brief moment of excitement and joy.
+    </p>
+    <p data-lang="pl">
+        Design inspirowany beztroskimi chwilami spędzanymi z psem, które możesz mieć zawsze przy sobie. Na tarczy pojawia się Twój Drugi Zwierzak (Second Pet) – czujny i skupiony, jakby w każdej chwili miał złapać lecącą piłkę. Z każdą minutą scena ożywa, przywołując ten krótki moment ekscytacji i radości.
+    </p>
+
+    <p data-lang="en">
+        The universal case size looks great on most wrists. The dial design balances a bold motif with clear legibility. The silver sunburst finish adds depth, while muted, dark grey indices allow you to read the time quickly without unnecessary distractions.
+    </p>
+    <p data-lang="pl">
+        Koperta o uniwersalnej wielkości dobrze prezentuje się zarówno na większości nadgarstków. Projekt tarczy łączy wyrazisty motyw z czytelnością. Srebrne wykończenie typu sunburst dodaje głębi, a stonowane, ciemnoszare indeksy pozwalają szybko odczytać godzinę bez zbędnych rozproszeń.
+    </p>
+
+    <p data-lang="en">
+        The dog's silhouette wraps around the dial, creating a cohesive and functional composition. Its nose points to 12 o'clock, while subtle dots mark the 3, 6, and 9 positions. Slightly lighter dots indicate the remaining hours. The standout feature is the tennis ball second hand—a detail designed and manufactured specifically for this model, giving the whole piece movement and lightness. This is literally a one-of-a-kind model.
+    </p>
+    <p data-lang="pl">
+        Sylwetka psa oplata tarczę, tworząc spójną i funkcjonalną kompozycję. Jego nos wskazuje godzinę 12, a subtelne punkty wyznaczają godziny 3, 6 i 9. Nieco jaśniejsze punkty wskazują pozostałe godziny. Charakterystycznym elementem jest sekundnik zakończony piłką tenisową – detal zaprojektowany i wyprodukowany specjalnie do tego modelu, który nadaje całości ruch i lekkość. To dosłownie jedyny w swoim rodzaju model.
     </p>
 
     <div class="highlight-box">
         <h3 data-lang="en">First Production Batch</h3>
         <h3 data-lang="pl">Pierwsza Seria Produkcyjna</h3>
-
         <div class="trust-badges">
             <div class="badge-item">⚙️ <span data-lang="en">Custom components</span><span data-lang="pl">Dedykowane części</span></div>
             <div class="badge-item">🇵🇱 <span data-lang="en">Shipped from Poland</span><span data-lang="pl">Wysyłka z Polski</span></div>
@@ -248,39 +251,13 @@
             <div class="badge-item">✅ <span data-lang="en">Quality inspected</span><span data-lang="pl">Sprawdzany przed wysyłką</span></div>
         </div>
     </div>
-
-    <p data-lang="en">
-        Adopt your Second Pet and bring it joy 1440 times a day! All without having to fetch the ball, throw it, or worry about your dog chewing it up.
-    </p>
-    <p data-lang="pl">
-        Przygarnij swojego Drugiego Zwierzaka (Second Pet) i sprawiaj mu radość 1440 razy dziennie! Przy okazji nie musisz iść po piłkę, rzucać jej, ani martwić się o to, że pies ją rozgryzie.
-    </p>
 </section>
 
 <section id="about">
     <h2 data-lang="en">About Project</h2>
     <h2 data-lang="pl">O projekcie</h2>
-
-    <p data-lang="en">
-        Second Pet started in 2026 with the goal of creating innovative concepts that bring joy to your wrist. The projects I work on combine uniqueness and fresh ideas with thoughtful design.
-    </p>
-    <p data-lang="pl">
-        Projekt Second Pet wystartował w 2026 roku z myślą o tworzeniu nowatorskich rozwiązań, które z radością można nosić na nadgarstku. Projekty, nad którymi pracuję, łączy innowacyjność i nietuzinkowość ujęte w przemyślanej formie.
-    </p>
-
-    <p data-lang="en">
-        Every watch is shipped directly from Poland. Before heading out, it is carefully inspected and packed in a protective hard case to ensure your Second Pet arrives in perfect condition – despite the best efforts of courier companies. 😉 I also include a small souvenir with every order.
-    </p>
-    <p data-lang="pl">
-        Każdy zegarek wysyłany jest z Poznania. Przed wyruszeniem w drogę zostaje dokładnie sprawdzony i zapakowany w twarde etui, aby Twój Drugi Zwierzak dotarł do Ciebie w świetnej kondycji – mimo największych starań firm kurierskich. 😉 Do każdej paczki dorzucam też drobną pamiątkę.
-    </p>
-
-    <p data-lang="en">
-        Make sure to follow us on <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111;font-weight:700;">Instagram</a> to stay updated on new designs and offers.
-    </p>
-    <p data-lang="pl">
-        Koniecznie zaobserwujcie nas na <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111;font-weight:700;">Instagramie</a>, aby być na bieżąco z nowymi projektami i ofertami.
-    </p>
+    <p data-lang="en">Second Pet started in 2026 with the goal of creating innovative concepts that bring joy to your wrist. Every watch is shipped directly from Poznań, Poland, carefully inspected and packed in a protective hard case.</p>
+    <p data-lang="pl">Projekt Second Pet wystartował w 2026 roku z myślą o tworzeniu nowatorskich rozwiązań na nadgarstek. Każdy zegarek wysyłany jest z Poznania, dokładnie sprawdzony i zapakowany w twarde etui ochronne.</p>
 </section>
 
 <footer id="contact">
@@ -291,11 +268,9 @@
 <script>
 function setLang(lang){
     document.body.className = 'lang-' + lang;
-    
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById('btn-' + lang).classList.add('active');
 }
-
 setLang('en'); 
 </script>
 
