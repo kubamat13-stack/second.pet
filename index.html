@@ -58,9 +58,18 @@
         opacity:0.3;
         transition: 0.3s;
         padding: 0 5px;
+        background: none;
+        border: none;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #111;
     }
 
     .lang-btn.active { opacity:1; border-bottom: 2px solid #111; }
+    .lang-btn:hover { opacity: 0.6; }
 
     .hero {
         min-height:90vh;
@@ -106,47 +115,87 @@
         border-radius: 8px;
     }
 
+    /* ── Sections ── */
     section { max-width:800px; margin:0 auto; padding:80px 25px; }
 
     h2 { font-size:32px; text-align:center; margin-bottom:40px; letter-spacing: -0.5px; }
 
     p { font-size:17px; color:#333; margin-bottom:24px; text-align: justify; }
 
+    /* ── Model card wrapper ── */
+    .model-card {
+        background: #fff;
+        border: 1px solid #ececec;
+        border-radius: 16px;
+        padding: 50px 40px;
+        margin-bottom: 40px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    }
+
+    .model-card h2 { margin-top: 0; }
+
+    /* ── Product image ── */
+    .model-image {
+        width: auto;
+        max-width: 280px;
+        max-height: 480px;
+        display: block;
+        margin: 0 auto 40px auto;
+        border-radius: 12px;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.13);
+    }
+
+    /* ── Highlight box ── */
     .highlight-box {
         background:#f9f9f9;
-        padding:50px 30px;
-        margin:50px 0;
+        padding:20px 30px;
+        margin:40px 0 0 0;
         text-align:center;
         border-radius: 12px;
+    }
+
+    .highlight-box h3 {
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #111;
+        margin: 0 0 24px 0;
     }
 
     .trust-badges {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-top: 30px;
+        gap: 16px;
         text-align: left;
         max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
     }
 
-    .badge-item { font-size: 14px; font-weight: 600; color: #555; display: flex; align-items: center; gap: 10px; }
+    .badge-item {
+        font-size: 14px;
+        font-weight: 600;
+        color: #555;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
     footer { padding:60px 20px; text-align:center; border-top:1px solid #eee; font-size:15px; background: #fafafa; }
-    
+
     #contact p { text-align: center; }
 
     @media (max-width: 600px) {
         nav { gap: 12px; padding: 15px 10px; flex-wrap: wrap; }
         .lang-switch { border-left: none; padding-left: 0; width: 100%; text-align: center; margin-top: 5px; }
+        .model-card { padding: 32px 20px; }
+        .trust-badges { grid-template-columns: 1fr; }
     }
 
     @media (min-width:768px){
         .logo img { width:320px; }
         .tagline { font-size:24px; }
         h2 { font-size:42px; }
-        .trust-badges { grid-template-columns: 1fr 1fr; }
     }
 
     [data-lang="pl"], [data-lang="en"] { display: none; }
@@ -154,6 +203,7 @@
     body.lang-en [data-lang="en"] { display: block; }
     body.lang-pl span[data-lang="pl"], body.lang-en span[data-lang="en"] { display: inline; }
     body.lang-pl a.cta[data-lang="pl"], body.lang-en a.cta[data-lang="en"] { display: inline-block; }
+    body.lang-pl button.lang-btn[data-lang="pl"], body.lang-en button.lang-btn[data-lang="en"] { display: inline; }
 
 </style>
 </head>
@@ -169,12 +219,13 @@
     <a href="#contact" data-lang="pl">Kontakt</a>
 
     <div class="lang-switch">
-        <span class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</span>
-        <span style="opacity:0.3">|</span> 
-        <span class="lang-btn" id="btn-pl" onclick="setLang('pl')">PL</span>
+        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+        <span style="opacity:0.3">|</span>
+        <button class="lang-btn" id="btn-pl" onclick="setLang('pl')">PL</button>
     </div>
 </nav>
 
+<!-- ── HERO ── -->
 <div class="hero">
     <div class="logo">
         <img src="SECOND_PET-removebg-preview.png" alt="Second Pet logo">
@@ -183,90 +234,98 @@
     <div class="tagline" data-lang="en">A small joy, every minute.</div>
     <div class="tagline" data-lang="pl">Mała radość w każdej minucie.</div>
 
-    <a class="cta" data-lang="en" href="https://www.etsy.com/shop/SecondPet" target="_blank">Launching on Etsy April 2026</a>
-    <a class="cta" data-lang="pl" href="https://www.etsy.com/shop/SecondPet" target="_blank">Premiera na Etsy - Kwiecień 2026</a>
+    <a class="cta" data-lang="en" href="https://www.etsy.com/shop/SecondPet" target="_blank">Coming to Etsy - May 2026</a>
+    <a class="cta" data-lang="pl" href="https://www.etsy.com/shop/SecondPet" target="_blank">Wkrótce na Etsy - Maj 2026</a>
 
-    <div class="placeholder">
-        <span data-lang="en">Product images and video coming soon</span>
-        <span data-lang="pl">Zdjęcia i wideo produktu już wkrótce</span>
-    </div>
+
 </div>
 
+<!-- ── MODELS ── -->
 <section id="models">
-    <!-- MODEL YIN YANG -->
-    <h2 data-lang="en">Yin Yang Model</h2>
-    <h2 data-lang="pl">Model Yin Yang</h2>
 
-    <p data-lang="en">
-        A model featuring a custom-designed dial, produced in a limited run of 100 units. Its central motif depicts two cats arranged in a composition inspired by the yin yang symbol. Their cheerful expressions bring a sense of lightness, while the symbolism serves as a reminder of balance and the natural cycle of change—where better times always follow the difficult ones.
-    </p>
-    <p data-lang="pl">
-        Model z autorską tarczą wyprodukowaną na zamówienie w limitowanej ilości 100 sztuk. Jej centralnym motywem są dwa koty, które układają się w kompozycję inspirowaną symbolem yin yang. Ich pogodne wyrazy pyszczków wprowadzają lekkość, a sama symbolika przypomina o równowadze i naturalnym cyklu zmian, gdzie po trudniejszych momentach przychodzą lepsze.
-    </p>
+    <!-- YIN YANG -->
+    <div class="model-card">
+        <h2 data-lang="en">Yin Yang Model</h2>
+        <h2 data-lang="pl">Model Yin Yang</h2>
 
-    <p data-lang="en">
-        Designed to blend a friendly aesthetic with attention to detail and legibility, all within a minimalist form. The hour markers are inspired by the stripes on the cats' backs, and their ears double as indicators for the 12 and 6 o'clock positions.
-    </p>
-    <p data-lang="pl">
-        Projekt powstał z myślą o połączeniu przyjaznej estetyki z dbałością o detale i czytelnością, przy zachowaniu minimalistycznej formy. Indeksy godzin nawiązują do prążków na grzbietach kotów, a ich uszy pełnią jednocześnie funkcję oznaczeń godzin 12 i 6.
-    </p>
+        <img src="YinYang2.png" alt="Second Pet – Yin Yang watch" class="model-image">
 
-    <p data-lang="en">
-        The 36 mm case has a universal character and sits comfortably on most wrists. The black stainless steel bracelet enhances the overall look and ensures durability for daily use. An adjustable clasp allows for precise fitting, ensuring the watch rests perfectly on the hand.
-    </p>
-    <p data-lang="pl">
-        Koperta o średnicy 36 mm ma uniwersalny charakter i dobrze układa się na większości nadgarstków. Czarna bransoleta ze stali nierdzewnej podkreśla całość i zapewnia trwałość w codziennym użytkowaniu. Regulowane zapięcie umożliwia przecyzyjne dopasowanie, dzięki czemu zegarek wygodnie przylega do ręki.
-    </p>
+        <p data-lang="en">
+            A model featuring a custom-designed dial, produced in a limited run of 100 units. Its central motif depicts two cats arranged in a composition inspired by the yin yang symbol. Their cheerful expressions bring a sense of lightness, while the symbolism serves as a reminder of balance and the natural cycle of change-where better times always follow the difficult ones.
+        </p>
+        <p data-lang="pl">
+            Model z autorską tarczą wyprodukowaną na zamówienie w limitowanej ilości 100 sztuk. Jej centralnym motywem są dwa koty, które układają się w kompozycję inspirowaną symbolem yin yang. Ich pogodne wyrazy pyszczków wprowadzają lekkość, a sama symbolika przypomina o równowadze i naturalnym cyklu zmian, gdzie po trudniejszych momentach przychodzą lepsze.
+        </p>
 
-    <hr style="border:0; border-top:1px solid #eee; margin:60px 0;">
+        <p data-lang="en">
+            Designed to blend a friendly aesthetic with attention to detail and legibility, all within a minimalist form. The hour markers are inspired by the stripes on the cats' backs, and their ears double as indicators for the 12 and 6 o'clock positions.
+        </p>
+        <p data-lang="pl">
+            Projekt powstał z myślą o połączeniu przyjaznej estetyki z dbałością o detale i czytelnością, przy zachowaniu minimalistycznej formy. Indeksy godzin nawiązują do prążków na grzbietach kotów, a ich uszy pełnią jednocześnie funkcję oznaczeń godzin 12 i 6.
+        </p>
 
-    <!-- MODEL CATCH -->
-    <h2 data-lang="en">"Catch" Model</h2>
-    <h2 data-lang="pl">Model "Catch"</h2>
+        <p data-lang="en">
+            The 36 mm case has a universal character and sits comfortably on most wrists. The black stainless steel bracelet enhances the overall look and ensures durability for daily use. An adjustable clasp allows for precise fitting, ensuring the watch rests perfectly on the hand.
+        </p>
+        <p data-lang="pl">
+            Koperta o średnicy 36 mm ma uniwersalny charakter i dobrze układa się na większości nadgarstków. Czarna bransoleta ze stali nierdzewnej podkreśla całość i zapewnia trwałość w codziennym użytkowaniu. Regulowane zapięcie umożliwia precyzyjne dopasowanie, dzięki czemu zegarek wygodnie przylega do ręki.
+        </p>
 
-    <p data-lang="en">
-        Design inspired by carefree moments spent with a dog, which you can now carry with you at all times. On the dial, your Second Pet appears—alert and focused, as if ready to catch a flying ball at any second. With every passing minute, the scene comes alive, recalling that brief moment of excitement and joy.
-    </p>
-    <p data-lang="pl">
-        Design inspirowany beztroskimi chwilami spędzanymi z psem, które możesz mieć zawsze przy sobie. Na tarczy pojawia się Twój Drugi Zwierzak (Second Pet) – czujny i skupiony, jakby w każdej chwili miał złapać lecącą piłkę. Z każdą minutą scena ożywa, przywołując ten krótki moment ekscytacji i radości.
-    </p>
-
-    <p data-lang="en">
-        The universal case size looks great on most wrists. The dial design balances a bold motif with clear legibility. The silver sunburst finish adds depth, while muted, dark grey indices allow you to read the time quickly without unnecessary distractions.
-    </p>
-    <p data-lang="pl">
-        Koperta o uniwersalnej wielkości dobrze prezentuje się zarówno na większości nadgarstków. Projekt tarczy łączy wyrazisty motyw z czytelnością. Srebrne wykończenie typu sunburst dodaje głębi, a stonowane, ciemnoszare indeksy pozwalają szybko odczytać godzinę bez zbędnych rozproszeń.
-    </p>
-
-    <p data-lang="en">
-        The dog's silhouette wraps around the dial, creating a cohesive and functional composition. Its nose points to 12 o'clock, while subtle dots mark the 3, 6, and 9 positions. Slightly lighter dots indicate the remaining hours. The standout feature is the tennis ball second hand—a detail designed and manufactured specifically for this model, giving the whole piece movement and lightness. This is literally a one-of-a-kind model.
-    </p>
-    <p data-lang="pl">
-        Sylwetka psa oplata tarczę, tworząc spójną i funkcjonalną kompozycję. Jego nos wskazuje godzinę 12, a subtelne punkty wyznaczają godziny 3, 6 i 9. Nieco jaśniejsze punkty wskazują pozostałe godziny. Charakterystycznym elementem jest sekundnik zakończony piłką tenisową – detal zaprojektowany i wyprodukowany specjalnie do tego modelu, który nadaje całości ruch i lekkość. To dosłownie jedyny w swoim rodzaju model.
-    </p>
-
-    <div class="highlight-box">
-        <h3 data-lang="en">First Production Batch</h3>
-        <h3 data-lang="pl">Pierwsza Seria Produkcyjna</h3>
-
-        <div class="trust-badges">
-            <div class="badge-item">⚙️ <span data-lang="en">Custom components</span><span data-lang="pl">Dedykowane części</span></div>
-            <div class="badge-item">🇵🇱 <span data-lang="en">Shipped from Poland</span><span data-lang="pl">Wysyłka z Polski</span></div>
-            <div class="badge-item">📦 <span data-lang="en">Independent small run</span><span data-lang="pl">Niezależna, krótka seria</span></div>
-            <div class="badge-item">✅ <span data-lang="en">Quality inspected</span><span data-lang="pl">Sprawdzany przed wysyłką</span></div>
+        <div class="highlight-box">
+            <h3 data-lang="en">What's in the box</h3>
+            <h3 data-lang="pl">Co wyróżnia ten model</h3>
+            <div class="trust-badges">
+                <div class="badge-item">🎨 <span data-lang="en">Custom-designed dial</span><span data-lang="pl">Autorska tarcza na zamówienie</span></div>
+                <div class="badge-item">🔗 <span data-lang="en">Stainless steel bracelet</span><span data-lang="pl">Bransoleta ze stali nierdzewnej</span></div>
+                <div class="badge-item">🔢 <span data-lang="en">Limited run of 100 units</span><span data-lang="pl">Limitowana seria 100 sztuk</span></div>
+                <div class="badge-item">🇵🇱 <span data-lang="en">Shipped from Poland</span><span data-lang="pl">Wysyłka z Polski</span></div>
+            </div>
         </div>
     </div>
 
-    <p data-lang="en">
-        Adopt your Second Pet and bring it joy 1440 times a day! All without having to fetch the ball, throw it, or worry about your dog chewing it up.
-    </p>
-    <p data-lang="pl">
-        Przygarnij swojego Drugiego Zwierzaka (Second Pet) i sprawiaj mu radość 1440 razy dziennie! Przy okazji nie musisz iść po piłkę, rzucać jej, ani martwić się o to, że pies ją rozgryzie.
-    </p>
+    <!-- CATCH -->
+    <div class="model-card">
+        <h2 data-lang="en">"Catch" Model</h2>
+        <h2 data-lang="pl">Model „Łap"</h2>
+
+        <p data-lang="en">
+            Design inspired by carefree moments spent with a dog, which you can now carry with you at all times. On the dial, your Second Pet appears-alert and focused, as if ready to catch a flying ball at any second. With every passing minute, the scene comes alive, recalling that brief moment of excitement and joy.
+        </p>
+        <p data-lang="pl">
+            Design inspirowany beztroskimi chwilami spędzanymi z psem, które możesz mieć zawsze przy sobie. Na tarczy pojawia się Twój Drugi Zwierzak (Second Pet) – czujny i skupiony, jakby w każdej chwili miał złapać lecącą piłkę. Z każdą minutą scena ożywa, przywołując ten krótki moment ekscytacji i radości.
+        </p>
+
+        <p data-lang="en">
+            The universal case size looks great on most wrists. The dial design balances a bold motif with clear legibility. The silver sunburst finish adds depth, while muted, dark grey indices allow you to read the time quickly without unnecessary distractions.
+        </p>
+        <p data-lang="pl">
+            Koperta o uniwersalnej wielkości dobrze prezentuje się na większości nadgarstków. Projekt tarczy łączy wyrazisty motyw z czytelnością. Srebrne wykończenie typu sunburst dodaje głębi, a stonowane, ciemnoszare indeksy pozwalają szybko odczytać godzinę bez zbędnych rozproszeń.
+        </p>
+
+        <p data-lang="en">
+            The dog's silhouette wraps around the dial, creating a cohesive and functional composition. Its nose points to 12 o'clock, while subtle dots mark the 3, 6, and 9 positions. Slightly lighter dots indicate the remaining hours. The standout feature is the tennis ball second hand-a detail designed and manufactured specifically for this model, giving the whole piece movement and lightness. This is literally a one-of-a-kind model.
+        </p>
+        <p data-lang="pl">
+            Sylwetka psa oplata tarczę, tworząc spójną i funkcjonalną kompozycję. Jego nos wskazuje godzinę 12, a subtelne punkty wyznaczają godziny 3, 6 i 9. Nieco jaśniejsze punkty wskazują pozostałe godziny. Charakterystycznym elementem jest sekundnik zakończony piłką tenisową – detal zaprojektowany i wyprodukowany specjalnie do tego modelu, który nadaje całości ruch i lekkość. To dosłownie jedyny w swoim rodzaju model.
+        </p>
+
+        <div class="highlight-box">
+            <h3 data-lang="en">First Production Batch</h3>
+            <h3 data-lang="pl">Pierwsza Seria Produkcyjna</h3>
+            <div class="trust-badges">
+                <div class="badge-item">⚙️ <span data-lang="en">Custom components</span><span data-lang="pl">Dedykowane części</span></div>
+                <div class="badge-item">🇵🇱 <span data-lang="en">Shipped from Poland</span><span data-lang="pl">Wysyłka z Polski</span></div>
+                <div class="badge-item">📦 <span data-lang="en">Independent small run</span><span data-lang="pl">Niezależna, krótka seria</span></div>
+                <div class="badge-item">✅ <span data-lang="en">Quality inspected</span><span data-lang="pl">Sprawdzany przed wysyłką</span></div>
+            </div>
+        </div>
+    </div>
+
 </section>
 
+<!-- ── ABOUT ── -->
 <section id="about">
-    <h2 data-lang="en">About Project</h2>
+    <h2 data-lang="en">About the Project</h2>
     <h2 data-lang="pl">O projekcie</h2>
 
     <p data-lang="en">
@@ -291,18 +350,20 @@
     </p>
 </section>
 
+<!-- ── FOOTER / CONTACT ── -->
 <footer id="contact">
     <p data-lang="en">Questions? Reach out via <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111;font-weight:700;">Instagram</a>.</p>
     <p data-lang="pl">Masz pytania? Napisz do nas na <a href="https://www.instagram.com/second.pet.watch" target="_blank" style="color:#111;font-weight:700;">Instagramie</a>.</p>
 </footer>
 
 <script>
-function setLang(lang){
-    document.body.className = 'lang-' + lang;
-    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById('btn-' + lang).classList.add('active');
-}
-setLang('en'); 
+    function setLang(lang) {
+        document.body.className = 'lang-' + lang;
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('btn-' + lang).classList.add('active');
+        document.documentElement.lang = lang;
+    }
+    setLang('en');
 </script>
 
 </body>
