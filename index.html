@@ -1,30 +1,35 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Second Pet | Mała radość w każdej minucie</title>
+<title>Second Pet | A small joy, every minute</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="favicon-32x32.png">
 
-<!-- Poppins: font logo marki + Fredoka One: display -->
+<!--
+  FIX #2 - Typography:
+  Fredoka One lacks Polish diacritics (ą,ć,ę,ł etc.).
+  Replaced with Nunito Black (weight 900) for hero headline:
+  - Same chunky, rounded, playful character
+  - Full Latin Extended (Polish) glyph support
+  Poppins remains for all body/UI text (also has full Polish support).
+-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&family=Poppins:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
-   DESIGN TOKENS - paleta marki Second Pet
+   DESIGN TOKENS
    ============================================================ */
 :root {
-  /* Kolory marki */
-  --orange:    #FE9107;        /* akcentowy pomarańczowy */
-  --orange-dk: #cc7000;        /* cień przycisku */
-  --cream:     #fdf6df;        /* tło jasne */
-  --brown:     #3f1f1b;        /* tekst, tła ciemne */
-  --yellow:    #CFCB21;        /* żółto-zielony akcent */
+  --orange:    #FE9107;
+  --orange-dk: #cc7000;
+  --cream:     #fdf6df;
+  --brown:     #3f1f1b;
+  --yellow:    #CFCB21;
 
-  /* Pochodne */
-  --brown-mid: #7a4f45;        /* tekst drugorzędny */
+  --brown-mid: #7a4f45;
   --brown-lt:  rgba(63,31,27,0.08);
   --orange-lt: rgba(254,145,7,0.14);
   --yellow-lt: rgba(207,203,33,0.22);
@@ -32,23 +37,17 @@
   --shadow:    rgba(63,31,27,0.10);
   --shadow-lg: rgba(63,31,27,0.18);
 
-  /* Typografia */
-  --font:      'Poppins', sans-serif;       /* wszędzie */
-  --font-disp: 'Fredoka One', cursive;      /* duże nagłówki hero */
+  /* FIX #2: Nunito 900 for display (Polish diacritics support), Poppins for everything else */
+  --font:      'Poppins', sans-serif;
+  --font-disp: 'Nunito', sans-serif;
 
-  /* Layout */
   --nav-h:     68px;
   --radius:    18px;
   --radius-lg: 28px;
-
-  /* Easing */
   --bounce:    cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ============================================================
-   RESET & BASE
-   ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -62,7 +61,7 @@ body {
 }
 
 /* ============================================================
-   BLOBBY TŁO - wolno dryfujące plamy barw
+   BACKGROUND BLOBS
    ============================================================ */
 .bg-blobs {
   position: fixed;
@@ -84,16 +83,15 @@ body {
 .blob-2 { width:320px; height:320px; background:var(--yellow);  top:28%;   right:-80px; --dur:27s; animation-delay:-9s; }
 .blob-3 { width:380px; height:380px; background:var(--orange);  bottom:8%; left:8%;     --dur:19s; animation-delay:-5s; }
 .blob-4 { width:220px; height:220px; background:var(--yellow);  top:52%;   right:12%;   --dur:15s; animation-delay:-13s; }
-.blob-5 { width:280px; height:280px; background:var(--brown);   bottom:-60px; right:28%; --dur:30s; animation-delay:-7s; opacity: 0.08; }
+.blob-5 { width:280px; height:280px; background:var(--brown);   bottom:-60px; right:28%; --dur:30s; animation-delay:-7s; opacity:0.08; }
 
 @keyframes blobDrift {
-  0%   { transform: translate(0, 0) scale(1); }
-  33%  { transform: translate(28px, -18px) scale(1.04); }
-  66%  { transform: translate(-18px, 14px) scale(0.97); }
-  100% { transform: translate(12px, 22px) scale(1.02); }
+  0%   { transform: translate(0,0) scale(1); }
+  33%  { transform: translate(28px,-18px) scale(1.04); }
+  66%  { transform: translate(-18px,14px) scale(0.97); }
+  100% { transform: translate(12px,22px) scale(1.02); }
 }
 
-/* Odciski łap - canvas */
 #paw-canvas {
   position: fixed;
   inset: 0;
@@ -103,7 +101,7 @@ body {
 }
 
 /* ============================================================
-   NAWIGACJA
+   NAVIGATION
    ============================================================ */
 nav {
   position: fixed;
@@ -139,6 +137,16 @@ nav.scrolled {
   margin: 0 auto;
 }
 
+/*
+  FIX #1 - Nav language filtering:
+  Nav link <li> items use data-lang. The global language system
+  hides them correctly, but <li> is a block element so we must
+  override display to inline (flex row needs inline items).
+*/
+.nav-links li { display: none; }
+body.lang-en .nav-links li[data-lang="en"] { display: list-item; }
+body.lang-pl .nav-links li[data-lang="pl"] { display: list-item; }
+
 .nav-links a {
   text-decoration: none;
   color: var(--brown-mid);
@@ -154,7 +162,7 @@ nav.scrolled {
   transform: translateY(-2px);
 }
 
-/* Przełącznik języka - pill */
+/* Language pill toggle */
 .lang-switch {
   display: flex;
   background: rgba(63,31,27,0.07);
@@ -211,7 +219,7 @@ nav.scrolled {
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-/* Wysuwane menu mobilne */
+/* Mobile drawer */
 .mobile-nav {
   display: none;
   position: fixed;
@@ -227,6 +235,11 @@ nav.scrolled {
 
 .mobile-nav.open { display: flex; }
 
+/* FIX #1 - Mobile nav language filtering */
+.mobile-nav a { display: none; }
+body.lang-en .mobile-nav a[data-lang="en"] { display: block; }
+body.lang-pl .mobile-nav a[data-lang="pl"] { display: block; }
+
 .mobile-nav a {
   text-decoration: none;
   color: var(--brown-mid);
@@ -239,25 +252,29 @@ nav.scrolled {
 .mobile-nav a:hover { color: var(--orange); }
 
 /* ============================================================
-   HERO - płynne przejście do sekcji models przez gradient
+   HERO
+   FIX #3: min-height changed from 100vh to calc(100svh - 0px)
+   with explicit padding-bottom ensuring scroll-hint is always
+   visible. The scroll-hint is positioned absolute within hero.
+   We give hero enough bottom padding (120px) to guarantee the
+   hint never clips on standard 1080p / 768p viewports.
    ============================================================ */
 .hero {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
+  /* Use svh (small viewport height) so mobile browser chrome is excluded */
+  min-height: max(600px, 100svh);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* Paddingi: góra zostawia miejsce na nav, dół na scroll hint */
-  padding: calc(var(--nav-h) + 40px) 24px 140px;
+  /* Bottom padding reserves space so content doesn't overlap scroll-hint */
+  padding: calc(var(--nav-h) + 40px) 24px 160px;
   overflow: hidden;
-  /* Płynne przejście do sekcji models - cream->cream bez przerwy */
   background: transparent;
 }
 
-/* Duży nagłówek hero - Fredoka One dla maksymalnej ekspresji */
 .hero-logo {
   margin-bottom: 24px;
   opacity: 0;
@@ -266,10 +283,15 @@ nav.scrolled {
 
 .hero-logo img { width: 200px; }
 
+/*
+  FIX #2: hero headline now uses --font-disp (Nunito 900)
+  which fully supports Polish diacritics, same rounded energy.
+*/
 .hero-headline {
   font-family: var(--font-disp);
-  font-size: clamp(48px, 9vw, 100px);
-  line-height: 1.05;
+  font-weight: 900;
+  font-size: clamp(46px, 8.5vw, 96px);
+  line-height: 1.06;
   color: var(--brown);
   margin-bottom: 10px;
   opacity: 0;
@@ -278,7 +300,6 @@ nav.scrolled {
 
 .accent-orange { color: var(--orange); }
 
-/* Animowana kreska pod kluczowym słowem */
 .wiggle-underline {
   position: relative;
   display: inline-block;
@@ -292,7 +313,6 @@ nav.scrolled {
   background: var(--yellow);
   border-radius: 4px;
   z-index: -1;
-  transform: rotate(-1deg);
   animation: wiggle 3s ease-in-out infinite;
 }
 
@@ -302,21 +322,17 @@ nav.scrolled {
 }
 
 .hero-sub {
-  font-family: var(--font);
   font-size: 17px;
   font-weight: 600;
   color: var(--brown-mid);
-  /* Dół: miejsce na CTA + sporo oddechu przed scroll-hint */
   margin-bottom: 36px;
   opacity: 0;
   animation: popIn 0.7s var(--bounce) 0.5s forwards;
 }
 
-/* ── CTA - przycisk Etsy ── */
 .hero-cta-wrap {
   opacity: 0;
   animation: popIn 0.7s var(--bounce) 0.65s forwards;
-  /* Brak margin-bottom - scroll hint jest absolute */
 }
 
 .cta {
@@ -331,7 +347,6 @@ nav.scrolled {
   background: var(--orange);
   color: var(--white);
   border-radius: 50px;
-  /* 3D "kliknięcie" */
   box-shadow: 0 6px 0 var(--orange-dk), 0 10px 28px rgba(254,145,7,0.32);
   transition: transform 0.2s var(--bounce), box-shadow 0.2s;
   letter-spacing: 0.2px;
@@ -357,12 +372,15 @@ nav.scrolled {
   50%      { transform: translateY(-5px); }
 }
 
-/* ── Scroll hint - element pomocniczy na dole hero ──
-   Wyraźnie oddzielony od CTA, przyklejony do dołu sekcji
-   ============================================================ */
+/*
+  FIX #3: Scroll hint repositioned.
+  bottom: 32px keeps it reliably in viewport even at 768px height.
+  The 160px hero padding-bottom ensures the hero content
+  doesn't overlap with this absolutely-positioned element.
+*/
 .scroll-hint {
   position: absolute;
-  bottom: 44px;
+  bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -370,7 +388,6 @@ nav.scrolled {
   align-items: center;
   gap: 8px;
   opacity: 0;
-  /* Opóźniony pojaw - żeby nie konkurował z CTA */
   animation: fadeIn 0.8s ease 1.5s forwards;
   white-space: nowrap;
   text-decoration: none;
@@ -411,7 +428,7 @@ nav.scrolled {
   50%      { transform: translateY(7px); }
 }
 
-/* Dekoracyjne emoji floatery w hero */
+/* Hero floating emojis */
 .hero-floater {
   position: absolute;
   font-size: 28px;
@@ -448,7 +465,7 @@ nav.scrolled {
 .d4 { transition-delay: 0.35s; }
 
 /* ============================================================
-   WSPÓLNE ELEMENTY SEKCJI
+   SHARED SECTION
    ============================================================ */
 .section-wrap {
   position: relative;
@@ -458,7 +475,6 @@ nav.scrolled {
   padding: 90px 28px;
 }
 
-/* Pill eyebrow nad tytułem */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -485,8 +501,7 @@ nav.scrolled {
 }
 
 /* ============================================================
-   SEKCJA MODELS - tło cream, bez separatora
-   Przejście hero (cream/transparent) -> models (cream) = ciągłość
+   MODELS SECTION
    ============================================================ */
 #models {
   background: var(--cream);
@@ -509,7 +524,6 @@ nav.scrolled {
   box-shadow: 0 12px 0 rgba(63,31,27,0.07), 0 22px 60px var(--shadow-lg);
 }
 
-/* Kolorowy pasek na górze karty */
 .model-card::before {
   content: '';
   position: absolute;
@@ -556,8 +570,6 @@ nav.scrolled {
 .model-tag {
   display: inline-flex;
   align-items: center;
-  background: var(--tag-bg, var(--orange-lt));
-  color: var(--tag-color, var(--orange));
   font-family: var(--font);
   font-size: 11px;
   font-weight: 800;
@@ -569,8 +581,8 @@ nav.scrolled {
   width: fit-content;
 }
 
-.model-card.stripe-orange .model-tag { --tag-bg: var(--orange-lt); --tag-color: #b85500; }
-.model-card.stripe-yellow .model-tag { --tag-bg: var(--yellow-lt); --tag-color: #5a5600; }
+.model-card.stripe-orange .model-tag { background: var(--orange-lt); color: #b85500; }
+.model-card.stripe-yellow .model-tag { background: var(--yellow-lt); color: #5a5600; }
 
 .model-title {
   font-family: var(--font);
@@ -604,7 +616,6 @@ nav.scrolled {
   font-weight: 800;
   color: var(--brown);
   margin-bottom: 14px;
-  letter-spacing: 0.2px;
 }
 
 .trust-badges {
@@ -628,29 +639,24 @@ nav.scrolled {
 }
 
 .badge-item:hover { transform: scale(1.04); }
-.badge-icon { font-size: 15px; }
+.badge-icon { font-size: 15px; flex-shrink: 0; }
 
 /* ============================================================
-   SEKCJA ABOUT - płynne przejście przez gradient
-   models (cream) -> about (brown) -> footer (brown)
-   Gradient na górze about zamiast twardej krawędzi
+   ABOUT SECTION
+   Smooth cream → brown gradient transition at top.
    ============================================================ */
 #about {
   position: relative;
   z-index: 1;
   background: var(--brown);
-  /* Gradient maskujący przejście - cream na górze, brown na dole */
   padding-top: 0;
 }
 
-/* Pseudo-element: gradient przejściowy cream->brown */
 #about::before {
   content: '';
   display: block;
   height: 100px;
   background: linear-gradient(to bottom, var(--cream) 0%, var(--brown) 100%);
-  position: relative;
-  z-index: 0;
 }
 
 #about .section-wrap {
@@ -662,12 +668,33 @@ nav.scrolled {
   padding-bottom: 100px;
 }
 
-/* Na ciemnym tle - biel dla czytelności (WCAG AA) */
-#about .section-title  { color: var(--cream); }
-#about .eyebrow        { background: var(--orange); color: var(--white); }
-#about .about-body     { color: rgba(253,246,223,0.75); }
-#about .highlight-sentence { background: var(--yellow); color: var(--brown); }
+#about .section-title { color: var(--cream); }
+#about .eyebrow       { background: var(--orange); color: var(--white); }
 
+/*
+  FIX #4: Removed .highlight-sentence entirely.
+  "Souvenir" text is now plain .about-body paragraph, no background,
+  no bold, no rotation — clean and readable.
+*/
+.about-body {
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.85;
+  color: rgba(253,246,223,0.78);
+  margin-bottom: 20px;
+}
+
+.about-body a {
+  color: var(--orange);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.about-body a:hover { border-color: var(--orange); }
+
+/* ── Stat cards ── */
 .stat-row {
   display: flex;
   flex-direction: column;
@@ -701,13 +728,21 @@ nav.scrolled {
 .stat-card:nth-child(3) .stat-icon { animation-delay: -2s; }
 .stat-card:nth-child(4) .stat-icon { animation-delay: -3s; }
 
+/*
+  FIX #5: stat-text strong and span both carry data-lang.
+  The global language system handles visibility,
+  but strong/span are inline by default — we must ensure
+  strong shows as block and span shows as inline correctly.
+  strong[data-lang] is set display:block when active.
+  span[data-lang] is set display:inline when active (global rule handles this).
+*/
 .stat-text strong {
+  display: none; /* hidden by default; shown via lang rules below */
   font-family: var(--font);
-  display: block;
   font-size: 14px;
   font-weight: 800;
   color: var(--cream);
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .stat-text span {
@@ -716,46 +751,16 @@ nav.scrolled {
   color: rgba(253,246,223,0.65);
 }
 
-.about-body {
-  font-family: var(--font);
-  font-size: 16px;
-  line-height: 1.85;
-  color: rgba(253,246,223,0.75);
-  margin-bottom: 20px;
-}
-
-.about-body a {
-  color: var(--orange);
-  font-weight: 700;
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.2s;
-}
-
-.about-body a:hover { border-color: var(--orange); }
-
-.highlight-sentence {
-  font-family: var(--font);
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.35;
-  color: var(--brown);
-  background: var(--yellow);
-  border-radius: 16px;
-  padding: 18px 22px;
-  margin-bottom: 28px;
-  transform: rotate(-0.8deg);
-  display: block;
-}
+body.lang-en .stat-text strong[data-lang="en"] { display: block; }
+body.lang-pl .stat-text strong[data-lang="pl"] { display: block; }
 
 /* ============================================================
-   FOOTER - kontynuacja brown z about, zero krawędzi
+   FOOTER
    ============================================================ */
 footer {
   position: relative;
   z-index: 1;
   background: var(--brown);
-  /* Subtelna linia oddzielająca - kolor bliski brown */
   border-top: 1px solid rgba(253,246,223,0.1);
   padding: 60px 28px 52px;
   text-align: center;
@@ -780,12 +785,7 @@ footer {
   margin-bottom: 6px;
 }
 
-.footer-contact a {
-  color: var(--orange);
-  text-decoration: none;
-  font-weight: 800;
-}
-
+.footer-contact a { color: var(--orange); text-decoration: none; font-weight: 800; }
 .footer-contact a:hover { text-decoration: underline; }
 
 .footer-copy {
@@ -796,26 +796,36 @@ footer {
 }
 
 /* ============================================================
-   LANGUAGE SYSTEM - wyłącznie jedna wersja naraz
-   Domyślnie: PL (body.lang-pl)
+   LANGUAGE SYSTEM - FIX #1
+   Global zero-cross-language policy.
+   ALL [data-lang] elements are hidden by default.
+   Only elements matching the active body class are shown.
+   Element type matters for correct display value:
+   - block-level (p, h1, h2, h3, div, span.block) → display:block
+   - inline (span, strong inside text) → display:inline
+   - flex items (a.cta) → display:inline-flex
+   - scroll-hint-label (styled as block) → display:block
    ============================================================ */
 [data-lang="pl"],
 [data-lang="en"] { display: none; }
 
+/* Block elements */
 body.lang-pl [data-lang="pl"] { display: block; }
 body.lang-en [data-lang="en"] { display: block; }
 
-/* Inline spans */
+/* Inline spans (inside sentences) */
 body.lang-pl span[data-lang="pl"],
 body.lang-en span[data-lang="en"] { display: inline; }
 
-/* CTA linki */
+/* CTA anchor links */
 body.lang-pl a.cta[data-lang="pl"],
 body.lang-en a.cta[data-lang="en"] { display: inline-flex; }
 
-/* Scroll hint spans */
+/* Scroll hint labels */
 body.lang-pl .scroll-hint-label[data-lang="pl"],
 body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
+
+/* Nav <li> items — overridden above in nav section */
 
 /* ============================================================
    KEYFRAMES
@@ -849,15 +859,16 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
   .trust-badges { grid-template-columns: 1fr; }
   .section-wrap { padding: 64px 20px; }
   .hero-floater { display: none; }
-  .scroll-hint { bottom: 28px; }
+  /* FIX #3: on small screens, ensure scroll hint stays visible */
+  .scroll-hint { bottom: 24px; }
+  .hero { padding-bottom: 130px; }
 }
 </style>
 </head>
 
-<!-- Domyślnie PL zgodnie z wymaganiami -->
-<body class="lang-pl">
+<!-- FIX #1: Default language is now English -->
+<body class="lang-en">
 
-<!-- Blobby tło -->
 <div class="bg-blobs">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
@@ -869,22 +880,24 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
 <canvas id="paw-canvas"></canvas>
 
 <!-- ============================================================
-     NAWIGACJA
+     NAVIGATION
+     FIX #1: Each <li> has data-lang; CSS shows only active lang.
      ============================================================ -->
 <nav id="main-nav">
   <div class="nav-inner">
     <ul class="nav-links">
-      <li><a href="#models" data-lang="en">Watches</a></li>
-      <li><a href="#models" data-lang="pl">Zegarki</a></li>
-      <li><a href="#about"  data-lang="en">Story</a></li>
-      <li><a href="#about"  data-lang="pl">Historia</a></li>
-      <li><a href="#contact" data-lang="en">Say Hi</a></li>
-      <li><a href="#contact" data-lang="pl">Kontakt</a></li>
+      <li data-lang="en"><a href="#models">Watches</a></li>
+      <li data-lang="pl"><a href="#models">Zegarki</a></li>
+      <li data-lang="en"><a href="#about">Story</a></li>
+      <li data-lang="pl"><a href="#about">Historia</a></li>
+      <li data-lang="en"><a href="#contact">Say Hi</a></li>
+      <li data-lang="pl"><a href="#contact">Kontakt</a></li>
     </ul>
 
-    <div class="lang-switch" id="lang-desktop">
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
-      <button class="lang-btn active" onclick="setLang('pl')">PL</button>
+    <div class="lang-switch">
+      <!-- FIX #1: EN is active by default -->
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn"        onclick="setLang('pl')">PL</button>
     </div>
 
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -893,7 +906,7 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
   </div>
 </nav>
 
-<!-- Menu mobilne -->
+<!-- Mobile drawer: FIX #1 - data-lang on each link -->
 <div class="mobile-nav" id="mobile-nav">
   <a href="#models"  data-lang="en" onclick="closeMob()">Watches</a>
   <a href="#models"  data-lang="pl" onclick="closeMob()">Zegarki</a>
@@ -901,9 +914,9 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
   <a href="#about"   data-lang="pl" onclick="closeMob()">Historia</a>
   <a href="#contact" data-lang="en" onclick="closeMob()">Say Hi</a>
   <a href="#contact" data-lang="pl" onclick="closeMob()">Kontakt</a>
-  <div class="lang-switch" style="width:fit-content;">
-    <button class="lang-btn" onclick="setLang('en');closeMob()">EN</button>
-    <button class="lang-btn active" onclick="setLang('pl');closeMob()">PL</button>
+  <div class="lang-switch" style="width:fit-content; margin-top:8px;">
+    <button class="lang-btn active" onclick="setLang('en');closeMob()">EN</button>
+    <button class="lang-btn"        onclick="setLang('pl');closeMob()">PL</button>
   </div>
 </div>
 
@@ -912,19 +925,21 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
      ============================================================ -->
 <section class="hero">
 
-  <!-- Dekoracyjne emoji - reagują na język via JS -->
   <span class="hero-floater" style="top:14%; left:8%;  --frot:-8deg;  --fdur:4.2s; --fdelay:-1s;  animation-delay:0.9s;">🐱</span>
   <span class="hero-floater" style="top:18%; right:9%; --frot:6deg;   --fdur:3.8s; --fdelay:-2s;  animation-delay:1.1s;">⌚</span>
-  <span class="hero-floater" style="top:60%; left:5%;  --frot:-5deg;  --fdur:5s;   --fdelay:-0.5s;animation-delay:1.3s;">🐶</span>
-  <span class="hero-floater" style="top:55%; right:7%; --frot:10deg;  --fdur:4.5s; --fdelay:-3s;  animation-delay:1.0s;">🎾</span>
-  <span class="hero-floater" style="top:80%; left:15%; --frot:-3deg;  --fdur:3.5s; --fdelay:-1.5s;animation-delay:1.5s;">✨</span>
-  <span class="hero-floater" style="top:75%; right:14%;--frot:7deg;   --fdur:4.8s; --fdelay:-4s;  animation-delay:1.2s;">🐾</span>
+  <span class="hero-floater" style="top:58%; left:5%;  --frot:-5deg;  --fdur:5s;   --fdelay:-0.5s;animation-delay:1.3s;">🐶</span>
+  <span class="hero-floater" style="top:52%; right:7%; --frot:10deg;  --fdur:4.5s; --fdelay:-3s;  animation-delay:1.0s;">🎾</span>
+  <span class="hero-floater" style="top:72%; left:14%; --frot:-3deg;  --fdur:3.5s; --fdelay:-1.5s;animation-delay:1.5s;">✨</span>
+  <span class="hero-floater" style="top:68%; right:13%;--frot:7deg;   --fdur:4.8s; --fdelay:-4s;  animation-delay:1.2s;">🐾</span>
 
   <div class="hero-logo">
     <img src="SECOND_PET-removebg-preview.png" alt="Second Pet">
   </div>
 
-  <!-- Nagłówek: tylko jeden widoczny naraz -->
+  <!--
+    FIX #2: font-family is now Nunito 900 (via --font-disp).
+    Polish: "Mała", "radość" now render with proper diacritics.
+  -->
   <h1 class="hero-headline" data-lang="en">
     A <span class="wiggle-underline accent-orange">small joy</span>,<br>every minute.
   </h1>
@@ -935,7 +950,6 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
   <p class="hero-sub" data-lang="en">Watches with personality - for pet lovers 🐾</p>
   <p class="hero-sub" data-lang="pl">Zegarki z charakterem - dla miłośników zwierząt 🐾</p>
 
-  <!-- CTA: przycisk Etsy -->
   <div class="hero-cta-wrap">
     <a class="cta" data-lang="en" href="https://www.etsy.com/shop/SecondPet" target="_blank">
       <span class="cta-emoji">🛍️</span> Coming to Etsy - May 2026
@@ -945,8 +959,8 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
     </a>
   </div>
 
-  <!-- Scroll hint: pomocniczy element na dole hero -->
-  <a class="scroll-hint" href="#models" aria-label="Przewiń do zegarków">
+  <!-- FIX #3: scroll hint always visible - bottom:32px, hero has 160px padding-bottom -->
+  <a class="scroll-hint" href="#models" aria-label="Scroll to watches">
     <span class="scroll-hint-label" data-lang="en">See the watches</span>
     <span class="scroll-hint-label" data-lang="pl">Zobacz zegarki</span>
     <div class="scroll-arrow">↓</div>
@@ -955,7 +969,7 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
 </section>
 
 <!-- ============================================================
-     MODELE
+     MODELS
      ============================================================ -->
 <section id="models">
   <div class="section-wrap">
@@ -965,11 +979,11 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
     <h2 class="section-title reveal d1" data-lang="en">Meet your new<br>wrist companion.</h2>
     <h2 class="section-title reveal d1" data-lang="pl">Poznaj swojego<br>nadgarstkowego towarzysza.</h2>
 
-    <!-- Yin Yang -->
+    <!-- YIN YANG -->
     <div class="model-card stripe-orange reveal d2">
       <div class="model-card-inner">
         <div class="model-image-col">
-          <img src="YinYang2.png" alt="Second Pet - zegarek Yin Yang">
+          <img src="YinYang2.png" alt="Second Pet - Yin Yang watch">
         </div>
         <div class="model-content-col">
           <div class="model-tag" data-lang="en">Model 01 🐱</div>
@@ -978,11 +992,15 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
           <h3 class="model-title" data-lang="en">Yin Yang</h3>
           <h3 class="model-title" data-lang="pl">Yin Yang</h3>
 
-          <p class="model-body" data-lang="en">A custom-designed dial, produced in a limited run of 100 units. Two cats arranged in a yin yang composition - their cheerful expressions bring lightness, while the symbolism reminds us that better times always follow the difficult ones.</p>
-          <p class="model-body" data-lang="pl">Autorska tarcza wyprodukowana na zamówienie w limitowanej ilości 100 sztuk. Dwa koty w kompozycji yin yang - ich pogodne pyszczki wprowadzają lekkość, a symbolika przypomina, że po trudniejszych momentach zawsze przychodzą lepsze.</p>
+          <!-- FIX #6: Full original English description restored -->
+          <p class="model-body" data-lang="en">A model featuring a custom-designed dial, produced in a limited run of 100 units. Its central motif depicts two cats arranged in a composition inspired by the yin yang symbol. Their cheerful expressions bring a sense of lightness, while the symbolism serves as a reminder of balance and the natural cycle of change - where better times always follow the difficult ones.</p>
+          <p class="model-body" data-lang="pl">Model z autorską tarczą wyprodukowaną na zamówienie w limitowanej ilości 100 sztuk. Centralnym motywem są dwa koty ułożone w kompozycję inspirowaną symbolem yin yang. Ich pogodne miny wprowadzają lekkość, a symbolika przypomina o równowadze i naturalnym cyklu zmian - po trudniejszych momentach zawsze przychodzą lepsze.</p>
 
-          <p class="model-body" data-lang="en">The hour markers are inspired by the stripes on the cats' backs, and their ears double as indicators for the 12 and 6 o'clock positions. The 36 mm black stainless steel mesh bracelet sits comfortably on most wrists.</p>
-          <p class="model-body" data-lang="pl">Indeksy godzin nawiązują do prążków na grzbietach kotów, a ich uszy wskazują godziny 12 i 6. Koperta 36 mm z czarną bransoletą mesh ze stali nierdzewnej doskonale leży na nadgarstku.</p>
+          <p class="model-body" data-lang="en">Designed to blend a friendly aesthetic with attention to detail and legibility, all within a minimalist form. The hour markers are inspired by the stripes on the cats' backs, and their ears double as indicators for the 12 and 6 o'clock positions.</p>
+          <p class="model-body" data-lang="pl">Projekt łączy przyjazną estetykę z dbałością o detale i czytelność, zachowując minimalistyczną formę. Indeksy godzin nawiązują do prążków na grzbietach kotów, a ich uszy pełnią jednocześnie funkcję oznaczeń godzin 12 i 6.</p>
+
+          <p class="model-body" data-lang="en">The 36 mm case has a universal character and sits comfortably on most wrists. The black stainless steel bracelet enhances the overall look and ensures durability for daily use. An adjustable clasp allows for precise fitting, ensuring the watch rests perfectly on the hand.</p>
+          <p class="model-body" data-lang="pl">Koperta o średnicy 36 mm ma uniwersalny charakter i dobrze układa się na większości nadgarstków. Czarna bransoleta ze stali nierdzewnej podkreśla całość i zapewnia trwałość w codziennym użytkowaniu. Regulowane zapięcie umożliwia precyzyjne dopasowanie.</p>
 
           <div class="highlight-box">
             <h3 data-lang="en">What makes it special 🌟</h3>
@@ -998,7 +1016,7 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
       </div>
     </div>
 
-    <!-- Łap / Catch -->
+    <!-- CATCH / ŁAP -->
     <div class="model-card stripe-yellow reveal d3">
       <div class="model-card-inner no-image">
         <div class="model-content-col">
@@ -1008,11 +1026,15 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
           <h3 class="model-title" data-lang="en">"Catch"</h3>
           <h3 class="model-title" data-lang="pl">„Łap"</h3>
 
-          <p class="model-body" data-lang="en">Design inspired by carefree moments with a dog - now carried with you always. On the dial, your Second Pet appears alert and focused, as if ready to catch a flying ball at any second. With every passing minute, the scene comes alive.</p>
-          <p class="model-body" data-lang="pl">Design inspirowany beztroskimi chwilami z psem - teraz zawsze przy Tobie. Na tarczy Twój Drugi Zwierzak czujny i skupiony, jakby w każdej chwili miał złapać lecącą piłkę. Z każdą minutą scena ożywa.</p>
+          <!-- FIX #6: Full original English Catch description restored -->
+          <p class="model-body" data-lang="en">Design inspired by carefree moments spent with a dog, which you can now carry with you at all times. On the dial, your Second Pet appears - alert and focused, as if ready to catch a flying ball at any second. With every passing minute, the scene comes alive, recalling that brief moment of excitement and joy.</p>
+          <p class="model-body" data-lang="pl">Design inspirowany beztroskimi chwilami z psem - teraz zawsze przy Tobie. Na tarczy Twój Drugi Zwierzak czujny i skupiony, jakby w każdej chwili miał złapać lecącą piłkę. Z każdą minutą scena ożywa, przywołując ten krótki moment ekscytacji i radości.</p>
 
-          <p class="model-body" data-lang="en">The dog's silhouette wraps around the dial. Its nose points to 12 o'clock, subtle dots mark the hours. The standout feature is the tennis ball second hand - a detail designed and manufactured specifically for this model. This is literally a one-of-a-kind piece.</p>
-          <p class="model-body" data-lang="pl">Sylwetka psa oplata tarczę. Jego nos wskazuje godzinę 12, subtelne punkty wyznaczają pozostałe godziny. Charakterystycznym elementem jest sekundnik zakończony piłką tenisową 🎾 - detal zaprojektowany specjalnie dla tego modelu. To dosłownie jedyny w swoim rodzaju zegarek.</p>
+          <p class="model-body" data-lang="en">The universal case size looks great on most wrists. The dial design balances a bold motif with clear legibility. The silver sunburst finish adds depth, while muted, dark grey indices allow you to read the time quickly without unnecessary distractions.</p>
+          <p class="model-body" data-lang="pl">Koperta o uniwersalnej wielkości dobrze prezentuje się na większości nadgarstków. Projekt tarczy łączy wyrazisty motyw z czytelnością. Srebrne wykończenie sunburst dodaje głębi, a stonowane, ciemnoszare indeksy pozwalają szybko odczytać godzinę.</p>
+
+          <p class="model-body" data-lang="en">The dog's silhouette wraps around the dial, creating a cohesive and functional composition. Its nose points to 12 o'clock, while subtle dots mark the 3, 6, and 9 positions. Slightly lighter dots indicate the remaining hours. The standout feature is the tennis ball 🎾 second hand - a detail designed and manufactured specifically for this model, giving the whole piece movement and lightness. This is literally a one-of-a-kind model.</p>
+          <p class="model-body" data-lang="pl">Sylwetka psa oplata tarczę, tworząc spójną i funkcjonalną kompozycję. Jego nos wskazuje godzinę 12, a subtelne punkty wyznaczają godziny 3, 6 i 9. Nieco jaśniejsze punkty wskazują pozostałe godziny. Charakterystycznym elementem jest sekundnik zakończony piłką tenisową 🎾 - detal zaprojektowany specjalnie dla tego modelu. To dosłownie jedyny w swoim rodzaju zegarek.</p>
 
           <div class="highlight-box">
             <h3 data-lang="en">First Production Batch 🎉</h3>
@@ -1032,10 +1054,9 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
 </section>
 
 <!-- ============================================================
-     ABOUT - płynne przejście przez gradient cream->brown
+     ABOUT - gradient transition cream → brown
      ============================================================ -->
 <section id="about">
-  <!-- #about::before generuje gradient przejściowy w CSS -->
   <div class="section-wrap">
 
     <div>
@@ -1044,8 +1065,12 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
       <h2 class="section-title reveal d1" data-lang="en">Made with love,<br>shipped with care.</h2>
       <h2 class="section-title reveal d1" data-lang="pl">Zrobione z pasji,<br>wysłane z troską.</h2>
 
-      <span class="highlight-sentence reveal d2" data-lang="en">"I also include a small souvenir with every order." 🎁</span>
-      <span class="highlight-sentence reveal d2" data-lang="pl">"Do każdej paczki dorzucam drobną pamiątkę." 🎁</span>
+      <!--
+        FIX #4: "souvenir" line is now a plain about-body paragraph.
+        No green background, no bold, no rotation, no highlight-sentence class.
+      -->
+      <p class="about-body reveal d2" data-lang="en">I also include a small souvenir with every order. 🎁</p>
+      <p class="about-body reveal d2" data-lang="pl">Do każdej paczki dorzucam drobną pamiątkę. 🎁</p>
 
       <p class="about-body reveal d3" data-lang="en">Second Pet started in 2026 with the goal of creating innovative concepts that bring joy to your wrist. The projects I work on combine uniqueness and fresh ideas with thoughtful design.</p>
       <p class="about-body reveal d3" data-lang="pl">Projekt Second Pet wystartował w 2026 roku z myślą o tworzeniu nowatorskich rozwiązań, które z radością można nosić na nadgarstku. Projekty, nad którymi pracuję, łączy innowacyjność i nietuzinkowość ujęte w przemyślanej formie.</p>
@@ -1054,6 +1079,12 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
       <p class="about-body reveal d4" data-lang="pl">Zaobserwuj nas na <a href="https://www.instagram.com/second.pet.watch" target="_blank">Instagramie</a> - nowe projekty, kulisy powstawania i oferty.</p>
     </div>
 
+    <!--
+      FIX #5: stat-text strong elements now have data-lang attributes.
+      CSS rules (body.lang-en/pl .stat-text strong[data-lang]) ensure
+      only the correct language title shows at any time.
+      span[data-lang] inside is handled by the global inline rule.
+    -->
     <div class="stat-row">
       <div class="stat-card reveal d1">
         <div class="stat-icon">📦</div>
@@ -1097,7 +1128,7 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
 </section>
 
 <!-- ============================================================
-     FOOTER / KONTAKT - ciągłość z brown sekcji about
+     FOOTER / CONTACT
      ============================================================ -->
 <footer id="contact">
   <div class="footer-logo reveal">
@@ -1117,23 +1148,23 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
      JAVASCRIPT
      ============================================================ -->
 <script>
-/* ── Przełącznik języka ──
-   Wyświetla wyłącznie jedną wersję językową naraz.
-   Domyślnie: PL (ustawione na body class i w initLang).
-   ── */
+/*
+  FIX #1 - setLang handles all language switching.
+  Updates body class, html lang attr, and all .lang-btn active states.
+  Nav <li> and mobile drawer <a> visibility is handled purely by CSS.
+*/
 function setLang(lang) {
   document.body.className = 'lang-' + lang;
   document.documentElement.lang = lang;
-  /* Aktualizuj wszystkie przyciski lang (nav desktop + mobile drawer) */
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
   });
 }
 
-/* Inicjalizacja - domyślnie PL */
-setLang('pl');
+/* FIX #1: Default is English */
+setLang('en');
 
-/* ── Menu mobilne ── */
+/* Mobile nav */
 const ham    = document.getElementById('hamburger');
 const mobNav = document.getElementById('mobile-nav');
 ham.addEventListener('click', () => {
@@ -1145,12 +1176,12 @@ function closeMob() {
   mobNav.classList.remove('open');
 }
 
-/* ── Navbar scroll ── */
+/* Navbar scroll */
 window.addEventListener('scroll', () => {
   document.getElementById('main-nav').classList.toggle('scrolled', scrollY > 30);
 }, { passive: true });
 
-/* ── Intersection Observer (scroll reveals) ── */
+/* Scroll reveal (IntersectionObserver) */
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
@@ -1158,7 +1189,7 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* ── Odciski łap (canvas) ── */
+/* Floating paw prints canvas */
 (function() {
   const canvas = document.getElementById('paw-canvas');
   const ctx    = canvas.getContext('2d');
@@ -1176,7 +1207,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     ctx.rotate(rot);
     ctx.fillStyle = '#3f1f1b';
     ctx.beginPath();
-    ctx.ellipse(0, size * 0.3, size * 0.55, size * 0.45, 0, 0, Math.PI * 2);
+    ctx.ellipse(0, size*0.3, size*0.55, size*0.45, 0, 0, Math.PI*2);
     ctx.fill();
     [[-size*.55,-size*.15],[-size*.2,-size*.52],[size*.2,-size*.52],[size*.55,-size*.15]]
       .forEach(([tx,ty]) => {
@@ -1222,14 +1253,14 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   loop();
 })();
 
-/* ── Tilt 3D kart przy hover (tylko desktop) ── */
+/* 3D card tilt on hover (desktop only) */
 if (matchMedia('(hover:hover)').matches) {
   document.querySelectorAll('.model-card').forEach(card => {
     card.addEventListener('mousemove', e => {
       const r  = card.getBoundingClientRect();
       const dx = (e.clientX - r.left - r.width  / 2) / (r.width  / 2);
       const dy = (e.clientY - r.top  - r.height / 2) / (r.height / 2);
-      card.style.transform = `translateY(-6px) rotate(${dx * 0.5}deg) perspective(900px) rotateX(${-dy * 1.4}deg)`;
+      card.style.transform = `translateY(-6px) rotate(${dx*0.5}deg) perspective(900px) rotateX(${-dy*1.4}deg)`;
     });
     card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   });
