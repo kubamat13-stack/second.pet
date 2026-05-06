@@ -826,9 +826,30 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
   .scroll-hint    { bottom: 20px; }
   .hero           { padding-bottom: 120px; }
 
+  /* Allow floaters to be visible on portrait mobile —
+     overflow:hidden on .hero was clipping them. clip the
+     hero only on the x-axis so vertical scrolling still works. */
+  .hero { overflow-x: clip; overflow-y: visible; }
+
+  /* Fix #1: Show floaters on mobile portrait, smaller so they
+     don't crowd the hero content */
+  .hero-floater {
+    display: block;
+    font-size: 18px;
+    opacity: 0; /* still animates in via floaterAppear */
+  }
+
   /* Cards */
   .model-content-col { padding: 24px 18px 28px; }
   .trust-badges      { grid-template-columns: 1fr; }
+
+  /* Fix #2: Yin Yang image - cap height so it doesn't fill the whole screen.
+     On mobile the card goes single-column so image col becomes full-width.
+     Capping max-height keeps it tasteful without dominating the viewport. */
+  .model-image-col {
+    min-height: 200px;
+    max-height: 240px;
+  }
 
   /* Sections */
   .section-wrap { padding: 60px 18px; }
