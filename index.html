@@ -929,45 +929,57 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
 </div>
 
 <!-- ============================================================
-     HERO
+     HERO - two-column: text left, floating watch image right
      ============================================================ -->
 <section class="hero">
 
-  <span class="hero-floater" style="top:14%; left:8%;  --frot:-8deg;  --fdur:4.2s; --fdelay:-1s;  animation-delay:0.9s;">🐱</span>
-  <span class="hero-floater" style="top:18%; right:9%; --frot:6deg;   --fdur:3.8s; --fdelay:-2s;  animation-delay:1.1s;">⌚</span>
-  <span class="hero-floater" style="top:58%; left:5%;  --frot:-5deg;  --fdur:5s;   --fdelay:-0.5s;animation-delay:1.3s;">🐶</span>
-  <span class="hero-floater" style="top:52%; right:7%; --frot:10deg;  --fdur:4.5s; --fdelay:-3s;  animation-delay:1.0s;">🎾</span>
-  <span class="hero-floater" style="top:72%; left:14%; --frot:-3deg;  --fdur:3.5s; --fdelay:-1.5s;animation-delay:1.5s;">✨</span>
-  <span class="hero-floater" style="top:68%; right:13%;--frot:7deg;   --fdur:4.8s; --fdelay:-4s;  animation-delay:1.2s;">🐾</span>
+  <span class="hero-floater" style="top:14%; left:4%;  --frot:-8deg;  --fdur:4.2s; --fdelay:-1s;  animation-delay:0.9s;">🐱</span>
+  <span class="hero-floater" style="top:18%; right:4%; --frot:6deg;   --fdur:3.8s; --fdelay:-2s;  animation-delay:1.1s;">⌚</span>
+  <span class="hero-floater" style="top:62%; left:2%;  --frot:-5deg;  --fdur:5s;   --fdelay:-0.5s;animation-delay:1.3s;">🐶</span>
+  <span class="hero-floater" style="top:55%; right:3%; --frot:10deg;  --fdur:4.5s; --fdelay:-3s;  animation-delay:1.0s;">🎾</span>
+  <span class="hero-floater" style="top:75%; left:8%;  --frot:-3deg;  --fdur:3.5s; --fdelay:-1.5s;animation-delay:1.5s;">✨</span>
+  <span class="hero-floater" style="top:70%; right:8%; --frot:7deg;   --fdur:4.8s; --fdelay:-4s;  animation-delay:1.2s;">🐾</span>
 
-  <div class="hero-logo">
-    <img src="SECOND_PET-removebg-preview.png" alt="Second Pet">
+  <div class="hero-inner">
+
+    <!-- Left: text content -->
+    <div class="hero-text">
+      <div class="hero-logo">
+        <img src="SECOND_PET-removebg-preview.png" alt="Second Pet">
+      </div>
+
+      <h1 class="hero-headline" data-lang="en">
+        A <span class="wiggle-underline accent-orange">small joy</span>,<br>every minute.
+      </h1>
+      <h1 class="hero-headline" data-lang="pl">
+        Mała <span class="wiggle-underline accent-orange">radość</span>,<br>w każdej minucie.
+      </h1>
+
+      <p class="hero-sub" data-lang="en">Watches with personality for pet lovers</p>
+      <p class="hero-sub" data-lang="pl">Zegarki z charakterem dla miłośników zwierząt</p>
+
+      <div class="hero-cta-wrap">
+        <a class="cta" data-lang="en" href="https://www.etsy.com/shop/SecondPet" target="_blank">
+          <span class="cta-emoji">🛍️</span> Coming to Etsy - May 2026
+        </a>
+        <a class="cta" data-lang="pl" href="https://www.etsy.com/shop/SecondPet" target="_blank">
+          <span class="cta-emoji">🛍️</span> Wkrótce na Etsy - Maj 2026
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: floating product photo with parallax + gentle sway -->
+    <div class="hero-watch-wrap">
+      <img
+        src="hero-watch.png"
+        alt="Second Pet watch"
+        class="hero-watch-img"
+        id="hero-watch"
+      >
+    </div>
+
   </div>
 
-  <!--
-    FIX #2: font-family is now Nunito 900 (via --font-disp).
-    Polish: "Mała", "radość" now render with proper diacritics.
-  -->
-  <h1 class="hero-headline" data-lang="en">
-    A <span class="wiggle-underline accent-orange">small joy</span>,<br>every minute.
-  </h1>
-  <h1 class="hero-headline" data-lang="pl">
-    Mała <span class="wiggle-underline accent-orange">radość</span>,<br>w każdej minucie.
-  </h1>
-
-  <p class="hero-sub" data-lang="en">Watches with personality for pet lovers</p>
-  <p class="hero-sub" data-lang="pl">Zegarki z charakterem dla miłośników zwierząt</p>
-
-  <div class="hero-cta-wrap">
-    <a class="cta" data-lang="en" href="https://www.etsy.com/shop/SecondPet" target="_blank">
-      <span class="cta-emoji">🛍️</span> Coming to Etsy - May 2026
-    </a>
-    <a class="cta" data-lang="pl" href="https://www.etsy.com/shop/SecondPet" target="_blank">
-      <span class="cta-emoji">🛍️</span> Wkrótce na Etsy - Maj 2026
-    </a>
-  </div>
-
-  <!-- FIX #3: scroll hint always visible - bottom:32px, hero has 160px padding-bottom -->
   <a class="scroll-hint" href="#models" aria-label="Scroll to watches">
     <span class="scroll-hint-label" data-lang="en">See the watches</span>
     <span class="scroll-hint-label" data-lang="pl">Zobacz zegarki</span>
