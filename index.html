@@ -487,33 +487,91 @@ body.lang-pl .nav-links li[data-lang="pl"] { display: list-item; }
 .model-card.stripe-orange { --stripe: var(--orange); }
 .model-card.stripe-yellow { --stripe: var(--yellow); }
 
+/*
+  New card layout: full-width text block with watch images
+  displayed as floating, tilted product shots — not as a
+  background fill. Small, elegant, attention-grabbing.
+*/
 .model-card-inner {
+  padding: 44px 44px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Top row: title area left + watch image(s) right */
+.model-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.model-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Watch image showcase — floats to the right of title */
+.watch-showcase {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.watch-shot {
+  position: relative;
+  width: 140px;
+  filter: drop-shadow(0 12px 28px rgba(63,31,27,0.18));
+  transition: transform 0.5s var(--bounce), filter 0.4s;
+  animation: watchSway var(--sway-dur, 5s) ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* Second image slightly offset for depth */
+.watch-shot:nth-child(2) {
+  width: 120px;
+  margin-top: 24px;
+  --sway-dur: 6.5s;
+  animation-delay: -2s;
+}
+
+.watch-shot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Hover: lift and sharpen shadow */
+.model-card:hover .watch-shot {
+  filter: drop-shadow(0 20px 40px rgba(63,31,27,0.28));
+}
+
+.watch-shot:hover {
+  transform: translateY(-8px) rotate(2deg) scale(1.06) !important;
+  animation-play-state: paused;
+  z-index: 2;
+}
+
+/* Gentle sway animation */
+@keyframes watchSway {
+  0%,100% { transform: rotate(-2deg) translateY(0); }
+  50%      { transform: rotate(2deg) translateY(-6px); }
+}
+
+/* Bottom: body text in a clean column layout */
+.model-card-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+  border-top: 1px solid rgba(63,31,27,0.07);
+  padding-top: 28px;
 }
 
-.model-card-inner.no-image { grid-template-columns: 1fr; }
-
-.model-image-col {
-  position: relative;
-  overflow: hidden;
-  background: var(--cream);
-  min-height: 480px;
-}
-
-.model-image-col img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-  transition: transform 0.7s var(--ease-out);
-}
-
-.model-card:hover .model-image-col img { transform: scale(1.04); }
+/* Single-column for cards with less text */
+.model-card-body.single { grid-template-columns: 1fr; }
 
 .model-content-col {
-  padding: 52px 44px;
   display: flex;
   flex-direction: column;
 }
@@ -792,75 +850,48 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
    RESPONSIVE - tablet
    ============================================================ */
 @media (max-width: 860px) {
-  .model-card-inner { grid-template-columns: 1fr; }
-  .model-image-col  { min-height: 300px; }
-  .model-content-col { padding: 36px 28px 40px; }
+  .model-card-body { grid-template-columns: 1fr; }
   #about .section-wrap { grid-template-columns: 1fr; gap: 44px; }
 }
 
 /* ============================================================
    RESPONSIVE - mobile (≤600px)
-   FIX #6: No hamburger. Nav links always visible, scaled down.
-   FIX #7: lang-switch always visible, never hidden.
-   FIX #9: Section scroll-offset via padding-top + negative margin.
    ============================================================ */
 @media (max-width: 600px) {
   :root { --nav-h: 56px; }
 
-  /* Nav: tighter padding so everything fits in one row */
   nav { padding: 0 12px; }
-
   .nav-inner { gap: 10px; }
-
-  /* Links scale down but stay visible */
   .nav-links { gap: 12px; margin: 0; }
   .nav-links a { font-size: 12px; }
-
-  /* Lang switch always shown — smaller padding on very narrow screens */
   .lang-switch { padding: 2px; }
   .lang-btn    { padding: 4px 8px; font-size: 10px; }
 
-  /* Hero */
   .hero-logo img  { width: 140px; }
-  .hero-floater   { display: none; }
+  .hero-floater   { display: block; font-size: 18px; }
   .scroll-hint    { bottom: 20px; }
-  .hero           { padding-bottom: 120px; }
+  .hero           { padding-bottom: 120px; overflow-x: clip; overflow-y: visible; }
 
-  /* Allow floaters to be visible on portrait mobile —
-     overflow:hidden on .hero was clipping them. clip the
-     hero only on the x-axis so vertical scrolling still works. */
-  .hero { overflow-x: clip; overflow-y: visible; }
+  /* Stack watch images above title on mobile */
+  .model-card-inner  { padding: 28px 20px 24px; gap: 20px; }
+  .model-card-top    { flex-direction: column; }
+  .watch-showcase    { justify-content: center; order: -1; }
+  .watch-shot        { width: 110px; }
+  .watch-shot:nth-child(2) { width: 95px; margin-top: 16px; }
+  .model-card-body   { padding-top: 20px; }
 
-  /* Fix #1: Show floaters on mobile portrait, smaller so they
-     don't crowd the hero content */
-  .hero-floater {
-    display: block;
-    font-size: 18px;
-    opacity: 0; /* still animates in via floaterAppear */
-  }
-
-  /* Cards */
-  .model-content-col { padding: 24px 18px 28px; }
-  .trust-badges      { grid-template-columns: 1fr; }
-
-  /* Fix #2: Yin Yang image - cap height so it doesn't fill the whole screen.
-     On mobile the card goes single-column so image col becomes full-width.
-     Capping max-height keeps it tasteful without dominating the viewport. */
-  .model-image-col {
-    min-height: 200px;
-    max-height: 240px;
-  }
-
-  /* Sections */
+  .trust-badges { grid-template-columns: 1fr; }
   .section-wrap { padding: 60px 18px; }
 }
 
-/* Extra narrow (≤360px): compress nav links further */
+/* Extra narrow (≤360px) */
 @media (max-width: 360px) {
-  .nav-links  { gap: 8px; }
+  .nav-links   { gap: 8px; }
   .nav-links a { font-size: 11px; }
-  .lang-btn   { padding: 4px 7px; }
-}
+  .lang-btn    { padding: 4px 7px; }
+  .watch-shot  { width: 90px; }
+  .watch-shot:nth-child(2) { width: 78px; }
+}}
 
 /* ============================================================
    FIX #9: Anchor scroll offset
@@ -987,72 +1018,104 @@ body.lang-en .scroll-hint-label[data-lang="en"] { display: block; }
     <h2 class="section-title reveal d1" data-lang="en">Meet your new<br>wrist companion.</h2>
     <h2 class="section-title reveal d1" data-lang="pl">Poznaj swojego<br>nadgarstkowego towarzysza.</h2>
 
-    <!-- CATCH / ŁAP — shown first -->
+    <!-- CATCH / ŁAP — shown first, two dog watch photos -->
     <div class="model-card stripe-yellow reveal d2">
-      <div class="model-card-inner no-image">
-        <div class="model-content-col">
-          <div class="model-tag" data-lang="en">🐶</div>
-          <div class="model-tag" data-lang="pl">🐶</div>
+      <div class="model-card-inner">
 
-          <h3 class="model-title" data-lang="en">"Catch"</h3>
-          <h3 class="model-title" data-lang="pl">„Łap"</h3>
+        <div class="model-card-top">
+          <div class="model-card-text">
+            <div class="model-tag" data-lang="en">🐶</div>
+            <div class="model-tag" data-lang="pl">🐶</div>
+            <h3 class="model-title" data-lang="en">"Catch"</h3>
+            <h3 class="model-title" data-lang="pl">„Łap"</h3>
+          </div>
 
-          <p class="model-body" data-lang="en">Design inspired by carefree moments spent with a dog, which you can now carry with you at all times. On the dial, your Second Pet appears - alert and focused, as if ready to catch a flying ball at any second. With every passing minute, the scene comes alive, recalling that brief moment of excitement and joy.</p>
-          <p class="model-body" data-lang="pl">Design inspirowany beztroskimi chwilami z psem - teraz zawsze przy Tobie. Na tarczy Twój Drugi Zwierzak czujny i skupiony, jakby w każdej chwili miał złapać lecącą piłkę. Z każdą minutą scena ożywa, przywołując ten krótki moment ekscytacji i radości.</p>
-
-          <p class="model-body" data-lang="en">The universal case size looks great on most wrists. The dial design balances a bold motif with clear legibility. The silver sunburst finish adds depth, while muted, dark grey indices allow you to read the time quickly without unnecessary distractions.</p>
-          <p class="model-body" data-lang="pl">Koperta o uniwersalnej wielkości dobrze prezentuje się na większości nadgarstków. Projekt tarczy łączy wyrazisty motyw z czytelnością. Srebrne wykończenie sunburst dodaje głębi, a stonowane, ciemnoszare indeksy pozwalają szybko odczytać godzinę.</p>
-
-          <p class="model-body" data-lang="en">The dog's silhouette wraps around the dial, creating a cohesive and functional composition. Its nose points to 12 o'clock, while subtle dots mark the 3, 6, and 9 positions. Slightly lighter dots indicate the remaining hours. The standout feature is the tennis ball 🎾 second hand - a detail designed and manufactured specifically for this model, giving the whole piece movement and lightness. This is literally a one-of-a-kind model.</p>
-          <p class="model-body" data-lang="pl">Sylwetka psa oplata tarczę, tworząc spójną i funkcjonalną kompozycję. Jego nos wskazuje godzinę 12, a subtelne punkty wyznaczają godziny 3, 6 i 9. Nieco jaśniejsze punkty wskazują pozostałe godziny. Charakterystycznym elementem jest sekundnik zakończony piłką tenisową 🎾 - detal zaprojektowany specjalnie dla tego modelu. To dosłownie jedyny w swoim rodzaju zegarek.</p>
-
-          <div class="highlight-box">
-            <h3 data-lang="en">First Production Batch 🎉</h3>
-            <h3 data-lang="pl">Pierwsza Seria Produkcyjna 🎉</h3>
-            <div class="trust-badges">
-              <div class="badge-item"><span class="badge-icon">⚙️</span><span data-lang="en">Custom components</span><span data-lang="pl">Dedykowane części</span></div>
-              <div class="badge-item"><span class="badge-icon">🇵🇱</span><span data-lang="en">Shipped from Poland</span><span data-lang="pl">Wysyłka z Polski</span></div>
-              <div class="badge-item"><span class="badge-icon">📦</span><span data-lang="en">Independent small run</span><span data-lang="pl">Niezależna, krótka seria</span></div>
-              <div class="badge-item"><span class="badge-icon">✅</span><span data-lang="en">Quality inspected</span><span data-lang="pl">Sprawdzany przed wysyłką</span></div>
+          <!-- Two watch photos: corgi + jamnik. PNG z przezroczystym tłem. -->
+          <div class="watch-showcase">
+            <div class="watch-shot" style="--sway-dur:5.2s;">
+              <img src="catch-corgi.png" alt="Catch watch - corgi">
+            </div>
+            <div class="watch-shot" style="--sway-dur:6.8s; animation-delay:-3s;">
+              <img src="catch-jamnik.png" alt="Catch watch - jamnik">
             </div>
           </div>
         </div>
+
+        <div class="model-card-body">
+          <div class="model-content-col">
+            <p class="model-body" data-lang="en">Design inspired by carefree moments spent with a dog, which you can now carry with you at all times. On the dial, your Second Pet appears - alert and focused, as if ready to catch a flying ball at any second. With every passing minute, the scene comes alive, recalling that brief moment of excitement and joy.</p>
+            <p class="model-body" data-lang="pl">Design inspirowany beztroskimi chwilami z psem - teraz zawsze przy Tobie. Na tarczy Twój Drugi Zwierzak czujny i skupiony, jakby w każdej chwili miał złapać lecącą piłkę. Z każdą minutą scena ożywa, przywołując ten krótki moment ekscytacji i radości.</p>
+
+            <p class="model-body" data-lang="en">The universal case size looks great on most wrists. The dial design balances a bold motif with clear legibility. The silver sunburst finish adds depth, while muted, dark grey indices allow you to read the time quickly without unnecessary distractions.</p>
+            <p class="model-body" data-lang="pl">Koperta o uniwersalnej wielkości dobrze prezentuje się na większości nadgarstków. Projekt tarczy łączy wyrazisty motyw z czytelnością. Srebrne wykończenie sunburst dodaje głębi, a stonowane, ciemnoszare indeksy pozwalają szybko odczytać godzinę.</p>
+
+            <p class="model-body" data-lang="en">The dog's silhouette wraps around the dial, creating a cohesive and functional composition. Its nose points to 12 o'clock, while subtle dots mark the 3, 6, and 9 positions. Slightly lighter dots indicate the remaining hours. The standout feature is the tennis ball 🎾 second hand - a detail designed and manufactured specifically for this model, giving the whole piece movement and lightness. This is literally a one-of-a-kind model.</p>
+            <p class="model-body" data-lang="pl">Sylwetka psa oplata tarczę, tworząc spójną i funkcjonalną kompozycję. Jego nos wskazuje godzinę 12, a subtelne punkty wyznaczają godziny 3, 6 i 9. Nieco jaśniejsze punkty wskazują pozostałe godziny. Charakterystycznym elementem jest sekundnik zakończony piłką tenisową 🎾 - detal zaprojektowany specjalnie dla tego modelu. To dosłownie jedyny w swoim rodzaju zegarek.</p>
+          </div>
+
+          <div class="model-content-col">
+            <div class="highlight-box">
+              <h3 data-lang="en">First Production Batch 🎉</h3>
+              <h3 data-lang="pl">Pierwsza Seria Produkcyjna 🎉</h3>
+              <div class="trust-badges">
+                <div class="badge-item"><span class="badge-icon">⚙️</span><span data-lang="en">Custom components</span><span data-lang="pl">Dedykowane części</span></div>
+                <div class="badge-item"><span class="badge-icon">🇵🇱</span><span data-lang="en">Shipped from Poland</span><span data-lang="pl">Wysyłka z Polski</span></div>
+                <div class="badge-item"><span class="badge-icon">📦</span><span data-lang="en">Independent small run</span><span data-lang="pl">Niezależna, krótka seria</span></div>
+                <div class="badge-item"><span class="badge-icon">✅</span><span data-lang="en">Quality inspected</span><span data-lang="pl">Sprawdzany przed wysyłką</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- YIN YANG — shown second -->
+    <!-- YIN YANG — shown second, single cat watch photo -->
     <div class="model-card stripe-orange reveal d3">
       <div class="model-card-inner">
-        <div class="model-image-col">
-          <img src="YinYang2.png" alt="Second Pet - Yin Yang watch">
-        </div>
-        <div class="model-content-col">
-          <div class="model-tag" data-lang="en">🐱</div>
-          <div class="model-tag" data-lang="pl">🐱</div>
 
-          <h3 class="model-title" data-lang="en">Yin Yang</h3>
-          <h3 class="model-title" data-lang="pl">Yin Yang</h3>
+        <div class="model-card-top">
+          <div class="model-card-text">
+            <div class="model-tag" data-lang="en">🐱</div>
+            <div class="model-tag" data-lang="pl">🐱</div>
+            <h3 class="model-title" data-lang="en">Yin Yang</h3>
+            <h3 class="model-title" data-lang="pl">Yin Yang</h3>
+          </div>
 
-          <p class="model-body" data-lang="en">A model featuring a custom-designed dial, produced in a limited run of 100 units. Its central motif depicts two cats arranged in a composition inspired by the yin yang symbol. Their cheerful expressions bring a sense of lightness, while the symbolism serves as a reminder of balance and the natural cycle of change - where better times always follow the difficult ones.</p>
-          <p class="model-body" data-lang="pl">Model z autorską tarczą wyprodukowaną na zamówienie w limitowanej ilości 100 sztuk. Centralnym motywem są dwa koty ułożone w kompozycję inspirowaną symbolem yin yang. Ich pogodne miny wprowadzają lekkość, a symbolika przypomina o równowadze i naturalnym cyklu zmian - po trudniejszych momentach zawsze przychodzą lepsze.</p>
-
-          <p class="model-body" data-lang="en">Designed to blend a friendly aesthetic with attention to detail and legibility, all within a minimalist form. The hour markers are inspired by the stripes on the cats' backs, and their ears double as indicators for the 12 and 6 o'clock positions.</p>
-          <p class="model-body" data-lang="pl">Projekt łączy przyjazną estetykę z dbałością o detale i czytelność, zachowując minimalistyczną formę. Indeksy godzin nawiązują do prążków na grzbietach kotów, a ich uszy pełnią jednocześnie funkcję oznaczeń godzin 12 i 6.</p>
-
-          <p class="model-body" data-lang="en">The 36 mm case has a universal character and sits comfortably on most wrists. The black stainless steel bracelet enhances the overall look and ensures durability for daily use. An adjustable clasp allows for precise fitting, ensuring the watch rests perfectly on the hand.</p>
-          <p class="model-body" data-lang="pl">Koperta o średnicy 36 mm ma uniwersalny charakter i dobrze układa się na większości nadgarstków. Czarna bransoleta ze stali nierdzewnej podkreśla całość i zapewnia trwałość w codziennym użytkowaniu. Regulowane zapięcie umożliwia precyzyjne dopasowanie.</p>
-
-          <div class="highlight-box">
-            <h3 data-lang="en">What makes it special 🌟</h3>
-            <h3 data-lang="pl">Co wyróżnia ten model 🌟</h3>
-            <div class="trust-badges">
-              <div class="badge-item"><span class="badge-icon">🎨</span><span data-lang="en">Custom-designed dial</span><span data-lang="pl">Autorska tarcza</span></div>
-              <div class="badge-item"><span class="badge-icon">🔗</span><span data-lang="en">Stainless steel bracelet</span><span data-lang="pl">Bransoleta ze stali</span></div>
-              <div class="badge-item"><span class="badge-icon">🔢</span><span data-lang="en">Limited - 100 units</span><span data-lang="pl">Limitowana - 100 szt.</span></div>
-              <div class="badge-item"><span class="badge-icon">🇵🇱</span><span data-lang="en">Shipped from Poland</span><span data-lang="pl">Wysyłka z Polski</span></div>
+          <!-- Single watch photo. PNG z przezroczystym tłem. -->
+          <div class="watch-showcase">
+            <div class="watch-shot" style="--sway-dur:4.8s;">
+              <img src="YinYang2.png" alt="Yin Yang watch">
             </div>
           </div>
         </div>
+
+        <div class="model-card-body">
+          <div class="model-content-col">
+            <p class="model-body" data-lang="en">A model featuring a custom-designed dial, produced in a limited run of 100 units. Its central motif depicts two cats arranged in a composition inspired by the yin yang symbol. Their cheerful expressions bring a sense of lightness, while the symbolism serves as a reminder of balance and the natural cycle of change - where better times always follow the difficult ones.</p>
+            <p class="model-body" data-lang="pl">Model z autorską tarczą wyprodukowaną na zamówienie w limitowanej ilości 100 sztuk. Centralnym motywem są dwa koty ułożone w kompozycję inspirowaną symbolem yin yang. Ich pogodne miny wprowadzają lekkość, a symbolika przypomina o równowadze i naturalnym cyklu zmian - po trudniejszych momentach zawsze przychodzą lepsze.</p>
+
+            <p class="model-body" data-lang="en">Designed to blend a friendly aesthetic with attention to detail and legibility, all within a minimalist form. The hour markers are inspired by the stripes on the cats' backs, and their ears double as indicators for the 12 and 6 o'clock positions.</p>
+            <p class="model-body" data-lang="pl">Projekt łączy przyjazną estetykę z dbałością o detale i czytelność, zachowując minimalistyczną formę. Indeksy godzin nawiązują do prążków na grzbietach kotów, a ich uszy pełnią jednocześnie funkcję oznaczeń godzin 12 i 6.</p>
+
+            <p class="model-body" data-lang="en">The 36 mm case has a universal character and sits comfortably on most wrists. The black stainless steel bracelet enhances the overall look and ensures durability for daily use. An adjustable clasp allows for precise fitting, ensuring the watch rests perfectly on the hand.</p>
+            <p class="model-body" data-lang="pl">Koperta o średnicy 36 mm ma uniwersalny charakter i dobrze układa się na większości nadgarstków. Czarna bransoleta ze stali nierdzewnej podkreśla całość i zapewnia trwałość w codziennym użytkowaniu. Regulowane zapięcie umożliwia precyzyjne dopasowanie.</p>
+          </div>
+
+          <div class="model-content-col">
+            <div class="highlight-box">
+              <h3 data-lang="en">What makes it special 🌟</h3>
+              <h3 data-lang="pl">Co wyróżnia ten model 🌟</h3>
+              <div class="trust-badges">
+                <div class="badge-item"><span class="badge-icon">🎨</span><span data-lang="en">Custom-designed dial</span><span data-lang="pl">Autorska tarcza</span></div>
+                <div class="badge-item"><span class="badge-icon">🔗</span><span data-lang="en">Stainless steel bracelet</span><span data-lang="pl">Bransoleta ze stali</span></div>
+                <div class="badge-item"><span class="badge-icon">🔢</span><span data-lang="en">Limited - 100 units</span><span data-lang="pl">Limitowana - 100 szt.</span></div>
+                <div class="badge-item"><span class="badge-icon">🇵🇱</span><span data-lang="en">Shipped from Poland</span><span data-lang="pl">Wysyłka z Polski</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
